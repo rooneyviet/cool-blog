@@ -4,6 +4,12 @@ import (
 	"gorm.io/gorm"
 )
 
+type Role struct {
+	gorm.Model
+	ID       uint   `gorm:"primary_key;autoIncrement"`
+	RoleName string `gorm:"type:varchar(50);not null"`
+}
+
 type User struct {
 	gorm.Model
 	ID       uint   `gorm:"primary_key;autoIncrement"`
@@ -13,8 +19,11 @@ type User struct {
 	Role     Role		`gorm:"foreignkey:RoleID"`
 }
 
-type Role struct {
-	gorm.Model
-	ID       uint   `gorm:"primary_key;autoIncrement"`
-	RoleName string `gorm:"type:varchar(50);not null"`
+type SignInRequest struct{
+	Email string `json:"email" binding:"required"`
+	Password string `json:"password" binding:"required"`
+}
+
+type SignInResponse struct {
+	JWToken string `json:"token"`
 }
