@@ -74,7 +74,7 @@ func (uc *UserController) Login(ctx *gin.Context){
 
 
 	var user models.User
-	result := uc.DB.First(&user, "username = ?", strings.ToLower(payload.UserName))
+	result := uc.DB.First(&user, "user_name = ?", strings.ToLower(payload.UserName))
 	if result.Error != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"result":"fail", "message":"Invalid email or password"})
 		return
@@ -84,4 +84,14 @@ func (uc *UserController) Login(ctx *gin.Context){
 		ctx.JSON(http.StatusBadRequest, gin.H{"result":"fail", "message":"Invalid email or password"})
 		return
 	}
+	token, err := middleware.GenerateJWT(payload.UserName)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"result":"fail", "message":err})
+		return
+	}
+
+	ctx.SetCookie("token", token, 3600, "/", "localhost", false, true)
+	ctx.SetCookie("logged_in", "1", 3600, "/", "localhost", false,false)
+
+	ctx.JSON(http.StatusOK, gin.H{"result":"success","token":token})
 }

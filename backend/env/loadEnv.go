@@ -1,6 +1,8 @@
 package env
 
 import (
+	"time"
+
 	"github.com/spf13/viper"
 )
 
@@ -15,7 +17,7 @@ type Config struct {
 	ClientOrigin string `mapstructure:"CLIENT_ORGIN"`
 
 	TokenKey     string `mapstructure:"TOKEN_KEY"`
-	TokenExpired string `mapstructure:"TOKEN_EXPIRED"`
+	TokenExpired time.Duration `mapstructure:"TOKEN_EXPIRED"`
 }
 
 func LoadEnv(path string) (config Config, err error) {

@@ -19,9 +19,9 @@ func GenerateJWT(username string) (string, error) {
 
 	claims["authorized"] = true
 	claims["username"] = username
-	claims["expired"] = time.Now().Add(time.Minute * 30).Unix()
+	claims["expired"] = time.Now().Add(config.TokenExpired).Unix()
 
-	tokenString, err := token.SignedString(config.TokenKey)
+	tokenString, err := token.SignedString([]byte(config.TokenKey))
 	if err != nil {
 		fmt.Printf("Cannot generate jwt: %s", err.Error())
 		return "", err
