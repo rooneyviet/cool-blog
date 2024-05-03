@@ -3,8 +3,8 @@ package main
 import (
 	"coolblog/controllers"
 	"coolblog/database"
+	"coolblog/env"
 	"coolblog/routes"
-	"fmt"
 	"log"
 
 	"github.com/gin-contrib/cors"
@@ -19,7 +19,6 @@ var (
 )
 
 func init(){
-	fmt.Println("start")
 	database.ConnectDB()
 
 	UserController = controllers.NewUserController(database.DB)
@@ -30,13 +29,17 @@ func init(){
 }
 
 func main() {
+	config, err := env.LoadEnv(".")
+	if err != nil {
+		log.Fatal("Could not load environment file", err)
+	}
 	corsConfig := cors.DefaultConfig()
-	corsConfig.AllowOrigins = []string{"http://localhost:8080"}
+	corsConfig.AllowOrigins = []string{"http://localhost:8080", config.ClientOrigin}
 	corsConfig.AllowMethods = []string{"GET", "POST", "PUT", "DELETE"}
 
 	server.Use(cors.New(corsConfig))
 
 	router := server.Group("/api")
 	UserRouteController.UserRoute(router)
-	log.Fatal(server.Run())
+	log.Fatal(server.Run(":"+config.ServerPort))
 }

@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"coolblog/env"
 	"errors"
 	"fmt"
 	"net/http"
@@ -12,6 +13,7 @@ import (
 var secretKey = []byte("kDxPZFyS0u")
 
 func GenerateJWT(username string) (string, error) {
+	config, _ := env.LoadEnv(".")
 	token := jwt.New(jwt.SigningMethodHS256)
 	claims := token.Claims.(jwt.MapClaims)
 
@@ -19,7 +21,7 @@ func GenerateJWT(username string) (string, error) {
 	claims["username"] = username
 	claims["expired"] = time.Now().Add(time.Minute * 30).Unix()
 
-	tokenString, err := token.SignedString(secretKey)
+	tokenString, err := token.SignedString(config.TokenKey)
 	if err != nil {
 		fmt.Printf("Cannot generate jwt: %s", err.Error())
 		return "", err

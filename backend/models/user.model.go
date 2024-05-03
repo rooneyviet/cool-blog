@@ -22,6 +22,11 @@ type RegisterRequest struct {
 	PassWordConfirm string `json:"password_confirm" binding:"required"`
 }
 
+type LoginInput struct {
+	UserName string `json:"username"`
+	Password string `json:"password"`
+}
+
 type LoginResponse struct {
 	JWToken string `json:"token"`
 }

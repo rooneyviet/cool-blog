@@ -5,6 +5,7 @@ import (
 	"coolblog/models"
 	"coolblog/utils"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -40,7 +41,7 @@ func (ac *UserController) RegisterUser(ctx *gin.Context) {
 
 	now := time.Now()
 	newUser := models.User{
-		UserName: payload.UserName,
+		UserName: strings.ToLower( payload.UserName),
 		Password: hashedPassword,
 		RoleID: 0,
 		CreateAt: now,
@@ -60,4 +61,27 @@ func (ac *UserController) RegisterUser(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusCreated, gin.H{"result":"success","token":jwtToken})
+}
+
+func (uc *UserController) Login(ctx *gin.Context){
+
+	payload:= &models.LoginInput{}
+
+	if err := ctx.ShouldBindJSON(payload); err != nil  {
+		ctx.JSON(http.StatusBadRequest, gin.H{"result":"fail", "message":err})
+		return
+	}
+
+
+	var user models.User
+	result := uc.DB.First(&user, "username = ?", strings.ToLower(payload.UserName))
+	if result.Error != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"result":"fail", "message":"Invalid email or password"})
+		return
+	}
+
+	if err := utils.VerifyPassword(user.Password, payload.Password); err != nil{
+		ctx.JSON(http.StatusBadRequest, gin.H{"result":"fail", "message":"Invalid email or password"})
+		return
+	}
 }
