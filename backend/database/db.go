@@ -11,7 +11,7 @@ import (
 var DB *gorm.DB
 func ConnectDB(){
 	var err error
-	dsn := "host=localhost user=postgres password=mysecretpassword dbname=coolblog port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	dsn := "host=supabase-db-postgres user=postgres password=nV@99trsJ4JHFd dbname=coolblog port=5432 sslmode=disable TimeZone=Asia/Shanghai"
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 
