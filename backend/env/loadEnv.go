@@ -28,13 +28,14 @@ func LoadEnv(path string) (config Config, err error) {
 	// viper.SetConfigName(".env.local")
 
 	env := os.Getenv("GO_ENV")
+	fmt.Println(env)
 	switch env {
 	case "development":
 		viper.SetConfigFile(".env.dev")
 	case "local":
 		viper.SetConfigFile(".env.local")
 	default:
-		viper.SetConfigFile(".env.dev")
+		viper.SetConfigFile(".env.local")
 	}
 
 	// viper.AutomaticEnv()

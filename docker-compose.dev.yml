@@ -22,8 +22,6 @@ services:
       - ./backend:/app
     ports:
       - 8010:8080
-    environment:
-      - OS_ENV=development
     depends_on:
       - supabase-db-postgres
     env_file:
