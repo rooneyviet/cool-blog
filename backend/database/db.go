@@ -1,6 +1,7 @@
 package database
 
 import (
+	"coolblog/env"
 	"coolblog/models"
 	"fmt"
 
@@ -10,13 +11,22 @@ import (
 
 var DB *gorm.DB
 func ConnectDB(){
+	config, _ := env.LoadEnv(".")
 	var err error
-	dsn := "host=supabase-db-postgres user=postgres password=nV@99trsJ4JHFd dbname=coolblog port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable TimeZone=Asia/Shanghai",
+	 config.DBHost, config.DBUser, config.DBPASSWORD, config.DBName, config.DBPort)
+
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 
 	if err != nil {
 		panic("Cannot connect to Database")
+	}
+
+	extensionInstall := DB.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
+
+	if extensionInstall.Error != nil {
+		fmt.Println("failed to create uuid extension")
 	}
 
 	DB.AutoMigrate(&models.User{}, &models.Role{})
