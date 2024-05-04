@@ -39,16 +39,35 @@ func (ac *UserController) RegisterUser(ctx *gin.Context) {
 		return
 	}
 
+	var roleCount int64
+	ac.DB.Model(&models.Role{}).Count(&roleCount)
+	if roleCount == 0{
+		adminRole := models.Role{RoleName: "admin", CreateAt: time.Now(), UpdateAt: time.Now()}
+		result := ac.DB.Create(&adminRole)
+		if result.Error != nil{
+			panic("failed to create admin role")
+		}
+
+	}
+
+	var role models.Role
+	result := ac.DB.First(&role, "role_name = ?", "admin")
+
+	if result.Error != nil{
+		panic("cannot find admin role")
+	}
+
 	now := time.Now()
 	newUser := models.User{
 		UserName: strings.ToLower( payload.UserName),
 		Password: hashedPassword,
-		RoleID: 0,
+		RoleID: role.ID,
 		CreateAt: now,
 		UpdateAt: now,
 	}
 
-	result := ac.DB.Create(&newUser)
+
+	result = ac.DB.Create(&newUser)
 	if result.Error != nil {
 		ctx.JSON(http.StatusConflict, gin.H{"result": "fail", "message": result.Error})
 		return
