@@ -29,7 +29,7 @@ func ConnectDB(){
 		fmt.Println("failed to create uuid extension")
 	}
 
-	DB.AutoMigrate(&models.User{}, &models.Role{})
+	DB.AutoMigrate(&models.User{}, &models.Role{}, &models.Category{})
 	// db.Create(&models.Role{RoleName: "Admin"})
 	// db.Create(&models.User{UserName: "admin", Password:"admin"})
 	fmt.Println("Migrated completed")

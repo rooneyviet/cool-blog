@@ -1,6 +1,8 @@
 package env
 
 import (
+	"fmt"
+	"os"
 	"time"
 
 	"github.com/spf13/viper"
@@ -23,9 +25,17 @@ type Config struct {
 func LoadEnv(path string) (config Config, err error) {
 	viper.AddConfigPath(path)
 	viper.SetConfigType("env")
-	viper.SetConfigName("app")
+	// viper.SetConfigName(".env.local")
 
-	viper.AutomaticEnv()
+	env := os.Getenv("GO_ENV")
+	switch env {
+	case "development":
+		viper.SetConfigFile(".env.dev")
+	default:
+		viper.SetConfigFile(".env.local")
+	}
+
+	// viper.AutomaticEnv()
 
 	err = viper.ReadInConfig()
 	if err != nil {
@@ -33,5 +43,6 @@ func LoadEnv(path string) (config Config, err error) {
 	}
 
 	err = viper.Unmarshal(&config)
+	fmt.Print(config.DBHost)
 	return
 }

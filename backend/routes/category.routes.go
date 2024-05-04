@@ -2,6 +2,7 @@ package routes
 
 import (
 	"coolblog/controllers"
+	"coolblog/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,5 +18,7 @@ func NewCategoryRouteController(categoryController controllers.CategoryControlle
 func (rc *CategoryRouteController) CategoryRoute(routeGroup *gin.RouterGroup) {
 	router := routeGroup.Group("category")
 
+	router.Use(middleware.AuthMiddleware)
 	router.GET("/", rc.categoryController.GetAllCategory)
+	router.POST("/add", rc.categoryController.PostCategory)
 }
