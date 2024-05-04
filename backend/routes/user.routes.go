@@ -19,4 +19,5 @@ func (rc *UserRouteController) UserRoute(routeGroup *gin.RouterGroup){
 
 	router.POST("/register", rc.userController.RegisterUser)
 	router.POST("/login", rc.userController.Login)
+	router.POST("/logout", rc.userController.Logout)
 }
