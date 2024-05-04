@@ -5,6 +5,7 @@ import { Menu, Package2, Search } from "lucide-react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { DarkThemeButton } from "../DarkThemeButton";
 
 const NavHeader = () => {
   return (
@@ -34,14 +35,14 @@ const NavHeader = () => {
         <SheetContent side="left">
           <nav className="grid gap-6 text-lg font-medium">
             <Link
-              href="#"
+              href="/"
               className="flex items-center gap-2 text-lg font-semibold"
             >
               <Package2 className="h-6 w-6" />
               <span className="sr-only">Home</span>
             </Link>
             <Link
-              href="#"
+              href="/"
               className="text-muted-foreground hover:text-foreground"
             >
               Home
@@ -49,8 +50,8 @@ const NavHeader = () => {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-        <form className="ml-auto flex-1 sm:flex-initial">
+      <div className="ml-auto flex items-center gap-4">
+        <form className="">
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -60,6 +61,7 @@ const NavHeader = () => {
             />
           </div>
         </form>
+        <DarkThemeButton />
         <LoginButton />
       </div>
     </header>

@@ -41,7 +41,6 @@ const Article = ({ image, title, description, date }: ArticleProps) => {
         <p className="text-gray-600 dark:text-gray-200 text-sm">
           {description}
         </p>
-        <p className="text-gray-500 dark:text-gray-200 text-sm">{date}</p>
       </div>
     </div>
   );
