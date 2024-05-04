@@ -117,7 +117,7 @@ func (uc *UserController) Login(ctx *gin.Context){
 
 func (uc *UserController) Logout(ctx *gin.Context){
 	ctx.SetCookie("token", "", -1, "/", "localhost", false, true)
-	ctx.SetCookie("logged_in", "1", -1, "/", "localhost", false,false)
+	ctx.SetCookie("logged_in", "0", -1, "/", "localhost", false,false)
 
 	ctx.JSON(http.StatusOK, gin.H{"status": "success"})
 }

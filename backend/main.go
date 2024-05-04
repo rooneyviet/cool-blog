@@ -16,6 +16,9 @@ var (
 
 	UserController controllers.UserController
 	UserRouteController routes.UserRouteController
+
+	CategoryController controllers.CategoryController
+	CategoryRouteController routes.CategoryRouteController
 )
 
 func init(){
@@ -23,6 +26,9 @@ func init(){
 
 	UserController = controllers.NewUserController(database.DB)
 	UserRouteController = routes.NewUserRouteController(UserController)
+
+	CategoryController = controllers.NewCategoryController(database.DB)
+	CategoryRouteController = routes.NewCategoryRouteController(CategoryController)
 
 	server = gin.Default()
 
@@ -41,5 +47,6 @@ func main() {
 
 	router := server.Group("/api")
 	UserRouteController.UserRoute(router)
+	CategoryRouteController.CategoryRoute(router)
 	log.Fatal(server.Run(":"+config.ServerPort))
 }
