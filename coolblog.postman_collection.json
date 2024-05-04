@@ -91,6 +91,81 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0ODMwNzUyLCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.062PSZh6qhw3yQws1U9KMN_oL0gy77tVcGQRyoP5hnM",
+								"type": "text",
+								"uuid": "468e149b-ae4e-4445-bf59-6772b504468c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"manga\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/category/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"category",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0ODM0NDUzLCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.vjhvUiybx3vNFejfT07QLQ1ix_6tnrXztzztzVrqXsM",
+								"uuid": "e4c6947c-dd95-4670-b4df-4fa87a44d65f"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/category/?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"category",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
