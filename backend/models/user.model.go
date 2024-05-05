@@ -2,18 +2,16 @@ package models
 
 import (
 	"time"
-
-	"github.com/google/uuid"
 )
 
 type User struct {
-	ID       uuid.UUID   `gorm:"type:uuid;default:uuid_generate_v4();primary_key"`
-	UserName string `gorm:"type:varchar(255);not null;unique"`
-	Password string `gorm:"type:varchar(255);not null"`
-	RoleID   uint
-	Role     Role `gorm:"foreignkey:RoleID"`
-	CreateAt time.Time `gorm:"not null"`
-	UpdateAt time.Time `gorm:"not null"`
+	ID       uint       `json:"id" gorm:"type:uuid;default:uuid_generate_v4();primary_key"`
+	UserName string     `json:"username" gorm:"type:varchar(255);not null;unique"`
+	Password string     `json:"password" gorm:"type:varchar(255);not null"`
+	RoleID   uint       `json:"role_id"`
+	Role     Role       `json:"role" gorm:"foreignkey:RoleID"`
+	CreateAt time.Time  `json:"create_at" gorm:"not null"`
+	UpdateAt time.Time  `json:"update_at" gorm:"not null"`
 }
 
 type RegisterRequest struct {
