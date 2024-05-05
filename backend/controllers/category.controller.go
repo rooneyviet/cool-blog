@@ -65,3 +65,77 @@ func (cc *CategoryController) PostCategory(ctx *gin.Context){
 
 	ctx.JSON(http.StatusCreated, gin.H{"result":"success"})
 }
+
+func (cc *CategoryController) GetCategory(ctx *gin.Context){
+	categoryId := ctx.Param("id")
+	if categoryId == "" {
+		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid input"})
+		return
+	}
+
+	var category models.Category
+	result := cc.DB.Where("id = ?", strings.ToLower(categoryId)).First(&category)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "category not found"})
+		return
+	}
+
+	ret := models.CategoriesResponse{ID: category.ID, Name: category.Name}
+
+	ctx.JSON(http.StatusOK, ret)
+}
+
+func (cc *CategoryController) EditCategory(ctx *gin.Context) {
+	var updatedItem models.PostCategoryRequest
+	err := ctx.BindJSON((&updatedItem))
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request input"})
+		return
+	}
+	categoryId := ctx.Param("id")
+	if categoryId == "" {
+		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid input"})
+		return
+	}
+
+	var category models.Category
+	result := cc.DB.Where("name = ?", strings.ToLower(updatedItem.Name)).First(&category)
+	if result.RowsAffected > 0 {
+		ctx.JSON(http.StatusConflict, gin.H{"result": "fail", "message":fmt.Sprintf("category %v has existed", updatedItem.Name)})
+		return
+	}
+
+	result = cc.DB.Where("id = ?", strings.ToLower(categoryId)).First(&category)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "category not found"})
+		return
+	}
+
+	category.Name = updatedItem.Name
+	category.UpdateAt = time.Now()
+	cc.DB.Save(&category)
+	ctx.JSON(http.StatusOK, category)
+}
+
+func (cc *CategoryController) DeleteCategory(ctx *gin.Context){
+	categoryId := ctx.Param("id")
+	if categoryId == "" {
+		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid input"})
+		return
+	}
+
+	var category models.Category
+	result := cc.DB.Where("id = ?", strings.ToLower(categoryId)).First(&category)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "category not found"})
+		return
+	}
+
+	result = cc.DB.Delete(&models.Category{}, categoryId)
+	if result.Error != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "failed to delete item"})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{"message": "item deleted successfully"})
+}
