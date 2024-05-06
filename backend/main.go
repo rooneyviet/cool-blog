@@ -22,6 +22,9 @@ var (
 
 	PostController controllers.PostController
 	PostRouteController routes.PostRouteController
+
+	ImageController controllers.ImageController
+	ImageRouteController routes.ImageRouteController
 )
 
 func init(){
@@ -35,6 +38,9 @@ func init(){
 
 	PostController = controllers.NewPostController(database.DB)
 	PostRouteController = routes.NewPostRouteController(PostController)
+
+	ImageController = controllers.NewImageController(database.DB)
+	ImageRouteController = routes.NewImageRouteController(ImageController)
 
 	server = gin.Default()
 
@@ -55,5 +61,6 @@ func main() {
 	UserRouteController.UserRoute(router)
 	CategoryRouteController.CategoryRoute(router)
 	PostRouteController.PostRoute(router)
+	ImageRouteController.ImageRoute(router)
 	log.Fatal(server.Run(":"+config.ServerPort))
 }

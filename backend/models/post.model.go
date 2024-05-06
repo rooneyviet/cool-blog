@@ -16,6 +16,8 @@ type Post struct {
 	User User `gorm:"foreignkey:UserID"`
 	CategoryID uint
 	Category Category `gorm:"foreignkey:CategoryID"`
+	ImageID uint
+	Image Image `gorm:"foreignkey:ImageID"`
 	CreateAt time.Time `json:"create_at" gorm:"not null"`
 	UpdateAt time.Time `json:"update_at" gorm:"not null"`
 }
@@ -26,8 +28,9 @@ type PostResponse struct {
 	ShortContent string `json:"short_content"`
 	Content string `json:"content"`
 	Highlight bool `json:"highlight"`
-	UserID uuid.UUID `json:"user_id" `
-	CategotyID uint `json:"category_id" `
+	UserID uuid.UUID `json:"user_id"`
+	CategotyID uint `json:"category_id"`
+	ImageID uint `json:"image_id"`
 	CreateAt time.Time `json:"create_at"`
 	UpdateAt time.Time `json:"update_at"`
 }
@@ -39,6 +42,7 @@ type PostInput struct {
 	Highlight bool `json:"highlight" binding:"required"`
 	UserID uuid.UUID `json:"user_id" binding:"required"`
 	CategotyID uint `json:"category_id" binding:"required"`
+	ImageID uint `json:"image_id"`
 }
 
 type PostEdit struct {
@@ -47,4 +51,5 @@ type PostEdit struct {
 	Content string `json:"content" binding:"required"`
 	Highlight bool `json:"highlight" binding:"required"`
 	CategotyID uint `json:"category_id" binding:"required"`
+	ImageID uint `json:"image_id"`
 }

@@ -44,6 +44,13 @@ func (pc *PostController) AddPost(ctx *gin.Context){
 		return
 	}
 
+	var image models.Image
+	result = pc.DB.Where("id = ?", payload.ImageID).First(&image)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "image not found"})
+		return
+	}
+
 	newPost := models.Post{
 		Title: payload.Title,
 		Content: payload.Content,
@@ -51,6 +58,7 @@ func (pc *PostController) AddPost(ctx *gin.Context){
 		Highlight: payload.Highlight,
 		UserID: payload.UserID,
 		CategoryID: payload.CategotyID,
+		ImageID: payload.ImageID,
 	}
 
 	result = pc.DB.Create(&newPost)
@@ -84,6 +92,7 @@ func (pc *PostController) GetOnePost(ctx *gin.Context){
 		Highlight: post.Highlight,
 		UserID: post.UserID,
 		CategotyID: post.CategoryID,
+		ImageID: post.ImageID,
 		CreateAt: post.CreateAt,
 		UpdateAt: post.UpdateAt,
 	}
@@ -123,11 +132,19 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 		return
 	}
 
+	var image models.Image
+	result = pc.DB.Where("id = ?", payload.ImageID).First(&image)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "image not found"})
+		return
+	}
+
 	post.Title = payload.Title
 	post.ShortContent = payload.ShortContent
 	post.Content = payload.Content
 	post.Highlight = payload.Highlight
 	post.CategoryID = payload.CategotyID
+	post.ImageID = payload.ImageID
 	post.UpdateAt = time.Now()
 	pc.DB.Save(&post)
 
@@ -139,6 +156,7 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 		Highlight: post.Highlight,
 		UserID: post.UserID,
 		CategotyID: post.CategoryID,
+		ImageID: post.ImageID,
 		CreateAt: post.CreateAt,
 		UpdateAt: post.UpdateAt,
 	}
