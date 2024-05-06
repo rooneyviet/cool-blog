@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"coolblog/models"
+	"coolblog/utils"
 	"fmt"
 	"net/http"
-	"path/filepath"
 	"time"
 
 	"github.com/disintegration/imaging"
@@ -49,15 +49,27 @@ func (ic *ImageController) AddImage(ctx *gin.Context){
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	thumb = imaging.Thumbnail(thumb, 100, 100, imaging.Lanczos)
+	const thumbWidth = 100
+	thumbHeight := thumbWidth * thumb.Bounds().Dy() / thumb.Bounds().Dx()
+	thumbImage := imaging.Resize(thumb, thumbWidth, thumbHeight, imaging.Lanczos)
 
-	if err := ctx.SaveUploadedFile(file, "uploads/"+file.Filename); err != nil {
+	prefix, err := utils.RandomString(4)
+	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	thumbnailFilename := "thumbnails/" + filepath.Base(file.Filename)
-	if err := imaging.Save(thumb, thumbnailFilename); err != nil {
+	newFilename := file.Filename + "_" + prefix
+
+	if err := ctx.SaveUploadedFile(file, "uploads/"+newFilename); err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	newFilename = file.Filename + "_thumbnail_" + prefix
+
+	thumbnailFilename := "thumbnails/" + newFilename
+	if err := imaging.Save(thumbImage, thumbnailFilename); err != nil {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 	}
@@ -90,3 +102,5 @@ func (ic *ImageController) GetAllImage(ctx *gin.Context){
 
 	ctx.JSON(http.StatusOK, ret)
 }
+
+
