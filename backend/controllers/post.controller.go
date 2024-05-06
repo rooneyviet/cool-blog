@@ -47,6 +47,7 @@ func (pc *PostController) AddPost(ctx *gin.Context){
 	newPost := models.Post{
 		Title: payload.Title,
 		Content: payload.Content,
+		ShortContent: payload.ShortContent,
 		Highlight: payload.Highlight,
 		UserID: payload.UserID,
 		CategoryID: payload.CategotyID,
@@ -78,6 +79,7 @@ func (pc *PostController) GetOnePost(ctx *gin.Context){
 	ret := models.PostResponse{
 		ID: post.ID,
 		Title: post.Title,
+		ShortContent: post.ShortContent,
 		Content: post.Content,
 		Highlight: post.Highlight,
 		UserID: post.UserID,
@@ -122,6 +124,7 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 	}
 
 	post.Title = payload.Title
+	post.ShortContent = payload.ShortContent
 	post.Content = payload.Content
 	post.Highlight = payload.Highlight
 	post.CategoryID = payload.CategotyID
@@ -131,6 +134,7 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 	ret := models.PostResponse{
 		ID: post.ID,
 		Title: post.Title,
+		ShortContent: post.ShortContent,
 		Content: post.Content,
 		Highlight: post.Highlight,
 		UserID: post.UserID,

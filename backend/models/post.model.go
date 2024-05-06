@@ -9,6 +9,7 @@ import (
 type Post struct {
 	ID       uint      `json:"id" gorm:"primaryKey;autoIncrement"`
 	Title     string    `json:"title" gorm:"type:varchar(100);not null"`
+	ShortContent string `json:"short_content" gorm:"type:varchar(200);"`
 	Content string `json:"content" gorm:"type:text;not null"`
 	Highlight bool `json:"highlight" gorm:"default:false"`
 	UserID	uuid.UUID
@@ -22,6 +23,7 @@ type Post struct {
 type PostResponse struct {
 	ID uint `json:"id"`
 	Title     string    `json:"title"`
+	ShortContent string `json:"short_content"`
 	Content string `json:"content"`
 	Highlight bool `json:"highlight"`
 	UserID uuid.UUID `json:"user_id" `
@@ -32,6 +34,7 @@ type PostResponse struct {
 
 type PostInput struct {
 	Title     string    `json:"title" binding:"required"`
+	ShortContent string `json:"short_content"`
 	Content string `json:"content" binding:"required"`
 	Highlight bool `json:"highlight" binding:"required"`
 	UserID uuid.UUID `json:"user_id" binding:"required"`
@@ -40,6 +43,7 @@ type PostInput struct {
 
 type PostEdit struct {
 	Title     string    `json:"title" binding:"required"`
+	ShortContent string `json:"short_content"`
 	Content string `json:"content" binding:"required"`
 	Highlight bool `json:"highlight" binding:"required"`
 	CategotyID uint `json:"category_id" binding:"required"`
