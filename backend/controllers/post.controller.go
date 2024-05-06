@@ -37,11 +37,19 @@ func (pc *PostController) AddPost(ctx *gin.Context){
 		return
 	}
 
+	var category models.Category
+	result = pc.DB.Where("id = ?", payload.CategotyID).First(&category)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "category not found"})
+		return
+	}
+
 	newPost := models.Post{
 		Title: payload.Title,
 		Content: payload.Content,
 		Highlight: payload.Highlight,
 		UserID: payload.UserID,
+		CategoryID: payload.CategotyID,
 	}
 
 	result = pc.DB.Create(&newPost)
@@ -96,9 +104,17 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 		return
 	}
 
+	var category models.Category
+	result = pc.DB.Where("id = ?", payload.CategotyID).First(&category)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "category not found"})
+		return
+	}
+
 	post.Title = payload.Title
 	post.Content = payload.Content
 	post.Highlight = payload.Highlight
+	post.CategoryID = payload.CategotyID
 	post.UpdateAt = time.Now()
 	pc.DB.Save(&post)
 

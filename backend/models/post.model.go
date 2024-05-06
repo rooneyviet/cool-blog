@@ -13,6 +13,8 @@ type Post struct {
 	Highlight bool `json:"hightlight" gorm:"default:false"`
 	UserID	uuid.UUID
 	User User `gorm:"foreignkey:UserID"`
+	CategoryID uint
+	Category Category `gorm:"foreignkey:CategoryID"`
 	CreateAt time.Time `json:"create_at" gorm:"not null"`
 	UpdateAt time.Time `json:"update_at" gorm:"not null"`
 }
@@ -22,10 +24,12 @@ type PostInput struct {
 	Content string `json:"content" binding:"required"`
 	Highlight bool `json:"hightlight" binding:"required"`
 	UserID uuid.UUID `json:"user_id" binding:"required"`
+	CategotyID uint `json:"category_id" binding:"required"`
 }
 
 type PostEdit struct {
 	Title     string    `json:"name" binding:"required"`
 	Content string `json:"content" binding:"required"`
 	Highlight bool `json:"hightlight" binding:"required"`
+	CategotyID uint `json:"category_id" binding:"required"`
 }
