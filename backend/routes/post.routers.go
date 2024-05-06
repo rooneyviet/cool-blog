@@ -16,7 +16,7 @@ func NewPostRouteController(PostController controllers.PostController) PostRoute
 }
 
 func (rc *PostRouteController) PostRoute(routeGroup *gin.RouterGroup){
-	router := routeGroup.Group("Post")
+	router := routeGroup.Group("post")
 
 	router.Use(middleware.AuthMiddleware)
 

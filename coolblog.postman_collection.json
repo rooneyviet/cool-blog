@@ -102,8 +102,8 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0ODMwNzUyLCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.062PSZh6qhw3yQws1U9KMN_oL0gy77tVcGQRyoP5hnM",
-								"uuid": "468e149b-ae4e-4445-bf59-6772b504468c"
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTc1ODk1LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.wo-ImcK4lOfrAK_YeMTg0qKKgNNQdzVWCFjxYw-jpM8",
+								"uuid": "de0a3113-e487-43c6-b721-498570d046eb"
 							}
 						],
 						"body": {
@@ -116,7 +116,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/category/add",
+							"raw": "http://localhost:8080/api/category/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -125,7 +125,7 @@
 							"path": [
 								"api",
 								"category",
-								"add"
+								""
 							]
 						}
 					},
@@ -139,7 +139,7 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTIyODY3LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.lw6mQi-Pyj3CZ32Jp-GWxoqYcGdC8e7DQFHiA6QfzGg",
-								"uuid": "e4c6947c-dd95-4670-b4df-4fa87a44d65f"
+								"uuid": "1042fc87-ea24-458b-b2ee-e48e3fa26ddb"
 							}
 						],
 						"url": {
@@ -175,8 +175,7 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTIyODY3LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.lw6mQi-Pyj3CZ32Jp-GWxoqYcGdC8e7DQFHiA6QfzGg",
-								"type": "text",
-								"uuid": "24e5832e-070a-4f86-ba00-9fdcdc58ea6e"
+								"uuid": "5c66b77e-9080-4185-b799-a42a235d8afd"
 							}
 						],
 						"body": {
@@ -212,8 +211,7 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTIyODY3LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.lw6mQi-Pyj3CZ32Jp-GWxoqYcGdC8e7DQFHiA6QfzGg",
-								"type": "text",
-								"uuid": "6aa1b123-65c9-4696-b86d-7f545384ff23"
+								"uuid": "36900174-8ea3-4b3a-806c-53b6c6966880"
 							}
 						],
 						"body": {
@@ -249,8 +247,7 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTIyODY3LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.lw6mQi-Pyj3CZ32Jp-GWxoqYcGdC8e7DQFHiA6QfzGg",
-								"type": "text",
-								"uuid": "fbf0daa4-c383-4b68-89a5-4c610e324057"
+								"uuid": "56010643-2089-4bc4-ab07-ba0577de373b"
 							}
 						],
 						"url": {
@@ -263,6 +260,137 @@
 							"path": [
 								"api",
 								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Add one",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTc1ODk1LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.wo-ImcK4lOfrAK_YeMTg0qKKgNNQdzVWCFjxYw-jpM8",
+								"uuid": "7c6667eb-3224-4f51-ad94-ade777da6272"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"test tile\",\r\n    \"content\":\"this is hot new please watch\",\r\n    \"highlight\": true,\r\n    \"user_id\":\"9874735c-4b4b-43a6-8919-b5f6835dfe97\",\r\n    \"category_id\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/post/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTc1ODk1LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.wo-ImcK4lOfrAK_YeMTg0qKKgNNQdzVWCFjxYw-jpM8",
+								"uuid": "407a228e-3d3c-4afb-895c-f9fd144d8881"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"test tile\",\r\n    \"content\":\"this is hot new please watch\",\r\n    \"highlight\": true,\r\n    \"user_id\":\"9874735c-4b4b-43a6-8919-b5f6835dfe97\",\r\n    \"category_id\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/post/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTc1ODk1LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.wo-ImcK4lOfrAK_YeMTg0qKKgNNQdzVWCFjxYw-jpM8",
+								"uuid": "f413ce80-cd79-403c-adf9-b9d38ef66add"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE0OTc1ODk1LCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.wo-ImcK4lOfrAK_YeMTg0qKKgNNQdzVWCFjxYw-jpM8",
+								"uuid": "5a75d91b-6919-47db-9f69-055295608c06"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"post",
 								"1"
 							]
 						}

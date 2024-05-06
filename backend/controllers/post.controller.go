@@ -75,7 +75,17 @@ func (pc *PostController) GetOnePost(ctx *gin.Context){
 		return
 	}
 
-	ctx.JSON(http.StatusOK, post)
+	ret := models.PostResponse{
+		ID: post.ID,
+		Title: post.Title,
+		Content: post.Content,
+		Highlight: post.Highlight,
+		UserID: post.UserID,
+		CategotyID: post.CategoryID,
+		CreateAt: post.CreateAt,
+		UpdateAt: post.UpdateAt,
+	}
+	ctx.JSON(http.StatusOK, ret)
 }
 
 func (pc *PostController) EditPost(ctx *gin.Context){
@@ -118,7 +128,18 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 	post.UpdateAt = time.Now()
 	pc.DB.Save(&post)
 
-	ctx.JSON(http.StatusOK, post)
+	ret := models.PostResponse{
+		ID: post.ID,
+		Title: post.Title,
+		Content: post.Content,
+		Highlight: post.Highlight,
+		UserID: post.UserID,
+		CategotyID: post.CategoryID,
+		CreateAt: post.CreateAt,
+		UpdateAt: post.UpdateAt,
+	}
+
+	ctx.JSON(http.StatusOK, ret)
 }
 
 func (pc *PostController) DeletePost(ctx *gin.Context){

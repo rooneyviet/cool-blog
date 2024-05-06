@@ -19,6 +19,9 @@ var (
 
 	CategoryController controllers.CategoryController
 	CategoryRouteController routes.CategoryRouteController
+
+	PostController controllers.PostController
+	PostRouteController routes.PostRouteController
 )
 
 func init(){
@@ -29,6 +32,9 @@ func init(){
 
 	CategoryController = controllers.NewCategoryController(database.DB)
 	CategoryRouteController = routes.NewCategoryRouteController(CategoryController)
+
+	PostController = controllers.NewPostController(database.DB)
+	PostRouteController = routes.NewPostRouteController(PostController)
 
 	server = gin.Default()
 
@@ -48,5 +54,6 @@ func main() {
 	router := server.Group("/api")
 	UserRouteController.UserRoute(router)
 	CategoryRouteController.CategoryRoute(router)
+	PostRouteController.PostRoute(router)
 	log.Fatal(server.Run(":"+config.ServerPort))
 }
