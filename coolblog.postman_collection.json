@@ -310,7 +310,7 @@
 				{
 					"name": "Edit",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
@@ -320,7 +320,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\":\"test tile\",\r\n    \"content\":\"this is hot new please watch\",\r\n    \"highlight\": true,\r\n    \"user_id\":\"9874735c-4b4b-43a6-8919-b5f6835dfe97\",\r\n    \"category_id\":2\r\n}",
+							"raw": "{\r\n    \"title\":\"this is title\",\r\n    \"content\":\"this is hot new please watch\",\r\n    \"highlight\": true,\r\n    \"category_id\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -328,7 +328,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/post/",
+							"raw": "http://localhost:8080/api/post/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -337,7 +337,7 @@
 							"path": [
 								"api",
 								"post",
-								""
+								"1"
 							]
 						}
 					},
@@ -391,6 +391,108 @@
 							"path": [
 								"api",
 								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Image",
+			"item": [
+				{
+					"name": "Add image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE1MDAwNTEwLCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.6H3bq6br0id33JeUlw94ZuaiUftv3WGh671sNzo9yg4",
+								"type": "text",
+								"uuid": "7578f441-c031-4752-8f7d-ee7c1eb013d3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/nghia/Pictures/スクリーンショット 2022-04-10 103818.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/image",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE1MDAwNTEwLCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.6H3bq6br0id33JeUlw94ZuaiUftv3WGh671sNzo9yg4",
+								"type": "text",
+								"uuid": "6beb64da-8b3a-41c4-b556-e9149aec499c"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/image?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"image"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHBpcmVkIjoxNzE1MDAwNTEwLCJ1c2VybmFtZSI6Im5naGlhcGJ0In0.6H3bq6br0id33JeUlw94ZuaiUftv3WGh671sNzo9yg4",
+								"uuid": "4dcf495d-3f3d-4dbd-8b9e-42f466f9e6e8"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/image/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"image",
 								"1"
 							]
 						}

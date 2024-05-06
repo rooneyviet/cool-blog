@@ -5,6 +5,7 @@ import (
 	"coolblog/utils"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/disintegration/imaging"
@@ -44,7 +45,28 @@ func (ic *ImageController) AddImage(ctx *gin.Context){
     return
 	}
 
-	thumb, err := imaging.Open("uploads/" + file.Filename)
+	prefix, err := utils.RandomString(4)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	directory := "uploads/thumbnails"
+	if _, err := os.Stat(directory); os.IsNotExist(err) {
+			err := os.MkdirAll(directory, 0755)
+			if err != nil {
+					panic(err)
+			}
+	}
+
+	newFilename := prefix + "_" + file.Filename
+
+	if err := ctx.SaveUploadedFile(file, "uploads/"+newFilename); err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	thumb, err := imaging.Open("uploads/" + newFilename)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -53,22 +75,9 @@ func (ic *ImageController) AddImage(ctx *gin.Context){
 	thumbHeight := thumbWidth * thumb.Bounds().Dy() / thumb.Bounds().Dx()
 	thumbImage := imaging.Resize(thumb, thumbWidth, thumbHeight, imaging.Lanczos)
 
-	prefix, err := utils.RandomString(4)
-	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
+	newFilename = "thumbnail_" + prefix + file.Filename
 
-	newFilename := file.Filename + "_" + prefix
-
-	if err := ctx.SaveUploadedFile(file, "uploads/"+newFilename); err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	newFilename = file.Filename + "_thumbnail_" + prefix
-
-	thumbnailFilename := "thumbnails/" + newFilename
+	thumbnailFilename := "uploads/thumbnails/" + newFilename
 	if err := imaging.Save(thumbImage, thumbnailFilename); err != nil {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
@@ -80,6 +89,8 @@ func (ic *ImageController) AddImage(ctx *gin.Context){
 		CreateAt: time.Now(),
 		UpdateAt: time.Now(),
 	}
+
+	ic.DB.Save(&result_object)
 
 	ctx.JSON(http.StatusOK, result_object)
 }
