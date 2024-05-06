@@ -131,6 +131,13 @@ func (cc *CategoryController) DeleteCategory(ctx *gin.Context){
 		return
 	}
 
+	// var post models.Post
+	result = cc.DB.Where("category_id = ?", categoryId)
+	if result.RowsAffected > 0 {
+		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "category is having post"})
+		return
+	}
+
 	result = cc.DB.Delete(&models.Category{}, categoryId)
 	if result.Error != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "failed to delete item"})
