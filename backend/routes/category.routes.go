@@ -22,6 +22,6 @@ func (rc *CategoryRouteController) CategoryRoute(routeGroup *gin.RouterGroup) {
 	router.GET("/", rc.categoryController.GetAllCategory)
 	router.GET("/:id", rc.categoryController.GetCategory)
 	router.PUT("/:id", rc.categoryController.EditCategory)
-	router.POST("/add", rc.categoryController.PostCategory)
+	router.POST("/", rc.categoryController.PostCategory)
 	router.DELETE("/:id", rc.categoryController.DeleteCategory)
 }

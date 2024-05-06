@@ -74,7 +74,7 @@ func (cc *CategoryController) GetCategory(ctx *gin.Context){
 	}
 
 	var category models.Category
-	result := cc.DB.Where("id = ?", strings.ToLower(categoryId)).First(&category)
+	result := cc.DB.Where("id = ?", categoryId).First(&category)
 	if result.RowsAffected == 0 {
 		ctx.JSON(http.StatusNotFound, gin.H{"result": "fail", "message": "category not found"})
 		return
