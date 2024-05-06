@@ -10,7 +10,7 @@ type User struct {
 	ID       uuid.UUID   `gorm:"type:uuid;default:uuid_generate_v4();primary_key"`
 	UserName string `gorm:"type:varchar(255);not null;unique"`
 	Password string `gorm:"type:varchar(255);not null"`
-	RoleID   uint
+	RoleID   uint `gorm:"not null"`
 	Role     Role `gorm:"foreignkey:RoleID"`
 	CreateAt time.Time `gorm:"not null"`
 	UpdateAt time.Time `gorm:"not null"`

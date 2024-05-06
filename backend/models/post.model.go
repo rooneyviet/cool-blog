@@ -12,11 +12,11 @@ type Post struct {
 	ShortContent string `json:"short_content" gorm:"type:varchar(200);"`
 	Content string `json:"content" gorm:"type:text;not null"`
 	Highlight bool `json:"highlight" gorm:"default:false"`
-	UserID	uuid.UUID
+	UserID	uuid.UUID `gorm:"not null"`
 	User User `gorm:"foreignkey:UserID"`
-	CategoryID uint
+	CategoryID uint `gorm:"not null"`
 	Category Category `gorm:"foreignkey:CategoryID"`
-	ImageID uint
+	ImageID uint `gorm:"not null"`
 	Image Image `gorm:"foreignkey:ImageID"`
 	CreateAt time.Time `json:"create_at" gorm:"not null"`
 	UpdateAt time.Time `json:"update_at" gorm:"not null"`
