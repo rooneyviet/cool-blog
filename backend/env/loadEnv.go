@@ -35,7 +35,7 @@ func LoadEnv(path string) (config Config, err error) {
 	case "local":
 		viper.SetConfigFile(".env.local")
 	default:
-		viper.SetConfigFile(".env.local")
+		viper.SetConfigFile(".env.dev")
 	}
 
 	// viper.AutomaticEnv()
