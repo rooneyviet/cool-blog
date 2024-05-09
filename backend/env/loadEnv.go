@@ -18,7 +18,7 @@ type Config struct {
 	ServerPort   string `mapstructure:"PORT"`
 	ClientOrigin string `mapstructure:"CLIENT_ORGIN"`
 
-	TokenKey     string `mapstructure:"TOKEN_KEY"`
+	TokenKey     string        `mapstructure:"TOKEN_KEY"`
 	TokenExpired time.Duration `mapstructure:"TOKEN_EXPIRED"`
 }
 

@@ -14,20 +14,20 @@ import (
 var (
 	server *gin.Engine
 
-	UserController controllers.UserController
+	UserController      controllers.UserController
 	UserRouteController routes.UserRouteController
 
-	CategoryController controllers.CategoryController
+	CategoryController      controllers.CategoryController
 	CategoryRouteController routes.CategoryRouteController
 
-	PostController controllers.PostController
+	PostController      controllers.PostController
 	PostRouteController routes.PostRouteController
 
-	ImageController controllers.ImageController
+	ImageController      controllers.ImageController
 	ImageRouteController routes.ImageRouteController
 )
 
-func init(){
+func init() {
 	database.ConnectDB()
 
 	UserController = controllers.NewUserController(database.DB)
@@ -62,5 +62,5 @@ func main() {
 	CategoryRouteController.CategoryRoute(router)
 	PostRouteController.PostRoute(router)
 	ImageRouteController.ImageRoute(router)
-	log.Fatal(server.Run(":"+config.ServerPort))
+	log.Fatal(server.Run(":" + config.ServerPort))
 }

@@ -10,14 +10,14 @@ import (
 )
 
 var DB *gorm.DB
-func ConnectDB(){
+
+func ConnectDB() {
 	config, _ := env.LoadEnv(".")
 	var err error
 	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable TimeZone=Asia/Shanghai",
-	 config.DBHost, config.DBUser, config.DBPASSWORD, config.DBName, config.DBPort)
+		config.DBHost, config.DBUser, config.DBPASSWORD, config.DBName, config.DBPort)
 
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-
 
 	if err != nil {
 		panic("Cannot connect to Database")
@@ -29,9 +29,10 @@ func ConnectDB(){
 		fmt.Println("failed to create uuid extension")
 	}
 
-	DB.AutoMigrate(&models.User{}, &models.Role{}, &models.Category{}, &models.Post{}, &models.Image{})
+	err = DB.AutoMigrate(&models.User{}, &models.Role{}, &models.Category{}, &models.Post{}, &models.Image{})
+	if err != nil {
+		return
+	}
 
 	fmt.Println("Migrated completed")
 }
-
-

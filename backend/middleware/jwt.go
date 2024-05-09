@@ -63,16 +63,16 @@ func GenerateJWT(username string) (string, error) {
 // 	return "authorized", nil
 // }
 
-func ValidateToken(tokenString string) (*jwt.Token, error){
+func ValidateToken(tokenString string) (*jwt.Token, error) {
 	config, _ := env.LoadEnv(".")
 	token, err := jwt.Parse(tokenString, func(t *jwt.Token) (interface{}, error) {
-		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok{
+		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", t.Header["alg"])
 		}
 		return []byte(config.TokenKey), nil
 	})
 
-	if err != nil{
+	if err != nil {
 		return nil, err
 	}
 
@@ -90,22 +90,22 @@ func ValidateToken(tokenString string) (*jwt.Token, error){
 	return token, nil
 }
 
-func AuthMiddleware(ctx *gin.Context){
+func AuthMiddleware(ctx *gin.Context) {
 	isLogging, err := ctx.Cookie("logged_in")
 	if err != nil || isLogging == "0" {
 		ctx.JSON(http.StatusUnauthorized, gin.H{
-			"result":"fail",
-			"message":"Unauthorized",
+			"result":  "fail",
+			"message": "Unauthorized",
 		})
 		ctx.Abort()
 		return
 	}
 
 	headerToken := ctx.GetHeader("Authorization")
-	if headerToken == ""{
+	if headerToken == "" {
 		ctx.JSON(http.StatusUnauthorized, gin.H{
-			"result":"fail",
-			"message":"Unauthorized",
+			"result":  "fail",
+			"message": "Unauthorized",
 		})
 		ctx.Abort()
 		return
@@ -114,8 +114,8 @@ func AuthMiddleware(ctx *gin.Context){
 	tokenCookie, err := ctx.Cookie("token")
 	if err != nil || headerToken != tokenCookie {
 		ctx.JSON(http.StatusUnauthorized, gin.H{
-			"result":"fail",
-			"message":"Unauthorized",
+			"result":  "fail",
+			"message": "Unauthorized",
 		})
 		ctx.Abort()
 		return
@@ -124,8 +124,8 @@ func AuthMiddleware(ctx *gin.Context){
 	_, err = ValidateToken(tokenCookie)
 	if err != nil {
 		ctx.JSON(http.StatusUnauthorized, gin.H{
-			"result":"fail",
-			"message":"Token expired or invalid",
+			"result":  "fail",
+			"message": "Token expired or invalid",
 		})
 		ctx.Abort()
 		return
