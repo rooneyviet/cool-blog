@@ -42,5 +42,7 @@ services:
       - /app/.next
     depends_on:
       - api-backend
+    env_file:
+      - ./user-frontend/.env.dev
 volumes:
   supabase-data:

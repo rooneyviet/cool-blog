@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -14,15 +16,17 @@ import {
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { LoginForm } from "../Login";
+import useUserStore from "@/store/userStore";
 
 const LoginButton = () => {
+  const [open, setOpen] = React.useState(false);
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">Login</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
-        <LoginForm />
+        <LoginForm onLoginSuccess={() => setOpen(false)} />
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
             <Button type="button" variant="secondary">
@@ -33,15 +37,6 @@ const LoginButton = () => {
       </DialogContent>
     </Dialog>
   );
-
-  //   return (
-  //     <Button asChild size="sm" className="gap-1">
-  //       <Link href="#">
-  //         Login
-  //         <KeyRoundIcon className="h-4 w-4" />
-  //       </Link>
-  //     </Button>
-  //   );
 };
 
 export default LoginButton;

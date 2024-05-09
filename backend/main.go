@@ -52,7 +52,7 @@ func main() {
 		log.Fatal("Could not load environment file", err)
 	}
 	corsConfig := cors.DefaultConfig()
-	corsConfig.AllowOrigins = []string{"http://localhost:8080", config.ClientOrigin}
+	corsConfig.AllowOrigins = []string{"http://localhost:8080", "http://localhost:3020","http://localhost:3000","http://localhost:8010", config.ClientOrigin}
 	corsConfig.AllowMethods = []string{"GET", "POST", "PUT", "DELETE"}
 
 	server.Use(cors.New(corsConfig))
