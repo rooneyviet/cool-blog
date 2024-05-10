@@ -11,15 +11,16 @@ type PostRouteController struct {
 	PostController controllers.PostController
 }
 
-func NewPostRouteController(PostController controllers.PostController) PostRouteController{
+func NewPostRouteController(PostController controllers.PostController) PostRouteController {
 	return PostRouteController{PostController}
 }
 
-func (rc *PostRouteController) PostRoute(routeGroup *gin.RouterGroup){
+func (rc *PostRouteController) PostRoute(routeGroup *gin.RouterGroup) {
 	router := routeGroup.Group("post")
 
 	router.Use(middleware.AuthMiddleware)
 
+	router.GET("/", rc.PostController.GetAllPost)
 	router.GET("/:id", rc.PostController.GetOnePost)
 	router.POST("/", rc.PostController.AddPost)
 	router.PUT("/:id", rc.PostController.EditPost)

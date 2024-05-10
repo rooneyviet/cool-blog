@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"coolblog/models"
+	"coolblog/utils"
 	"net/http"
 	"time"
 
@@ -17,16 +18,16 @@ func NewPostController(DB *gorm.DB) PostController {
 	return PostController{DB}
 }
 
-func (pc *PostController) AddPost(ctx *gin.Context){
+func (pc *PostController) AddPost(ctx *gin.Context) {
 	var payload *models.PostInput
 
 	if err := ctx.ShouldBindJSON(&payload); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message":err.Error()})
+		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": err.Error()})
 		return
 	}
 
 	if payload.Title == "" || payload.Content == "" {
-		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message":"invalid value"})
+		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid value"})
 		return
 	}
 
@@ -52,13 +53,13 @@ func (pc *PostController) AddPost(ctx *gin.Context){
 	}
 
 	newPost := models.Post{
-		Title: payload.Title,
-		Content: payload.Content,
+		Title:        payload.Title,
+		Content:      payload.Content,
 		ShortContent: payload.ShortContent,
-		Highlight: payload.Highlight,
-		UserID: payload.UserID,
-		CategoryID: payload.CategotyID,
-		ImageID: payload.ImageID,
+		Highlight:    payload.Highlight,
+		UserID:       payload.UserID,
+		CategoryID:   payload.CategotyID,
+		ImageID:      payload.ImageID,
 	}
 
 	result = pc.DB.Create(&newPost)
@@ -67,10 +68,53 @@ func (pc *PostController) AddPost(ctx *gin.Context){
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, gin.H{"result":"success"})
+	ctx.JSON(http.StatusCreated, gin.H{"result": "success"})
 }
 
-func (pc *PostController) GetOnePost(ctx *gin.Context){
+func (pc *PostController) GetAllPost(ctx *gin.Context) {
+	var posts []models.Post
+	result := pc.DB.Find(&posts)
+	if result.RowsAffected == 0 {
+		ctx.JSON(http.StatusOK, gin.H{"result": "success", "message": posts})
+		return
+	}
+	page := ctx.DefaultQuery("page", "1")
+	pageSize := ctx.DefaultQuery("pageSize", "10")
+
+	pageInt := utils.ConvertToInt(page)
+	pageSizeInt := utils.ConvertToInt(pageSize)
+
+	start := (pageInt - 1) * pageSizeInt
+	end := pageInt * pageSizeInt
+
+	// Nếu chỉ số kết thúc lớn hơn tổng số lượng người dùng, điều chỉnh nó
+	if end > len(posts) {
+		end = len(posts)
+	}
+
+	paginatedPosts := posts[start:end]
+
+	retPosts := []models.PostResponse{}
+	for _, item := range paginatedPosts {
+		p := models.PostResponse{
+			ID:           item.ID,
+			Title:        item.Title,
+			ShortContent: item.ShortContent,
+			Content:      item.Content,
+			Highlight:    item.Highlight,
+			UserID:       item.UserID,
+			CategotyID:   item.CategoryID,
+			ImageID:      item.ImageID,
+			CreateAt:     item.CreateAt,
+			UpdateAt:     item.UpdateAt,
+		}
+		retPosts = append(retPosts, p)
+	}
+
+	ctx.JSON(http.StatusOK, retPosts)
+}
+
+func (pc *PostController) GetOnePost(ctx *gin.Context) {
 	postId := ctx.Param("id")
 	if postId == "" {
 		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid input"})
@@ -85,21 +129,21 @@ func (pc *PostController) GetOnePost(ctx *gin.Context){
 	}
 
 	ret := models.PostResponse{
-		ID: post.ID,
-		Title: post.Title,
+		ID:           post.ID,
+		Title:        post.Title,
 		ShortContent: post.ShortContent,
-		Content: post.Content,
-		Highlight: post.Highlight,
-		UserID: post.UserID,
-		CategotyID: post.CategoryID,
-		ImageID: post.ImageID,
-		CreateAt: post.CreateAt,
-		UpdateAt: post.UpdateAt,
+		Content:      post.Content,
+		Highlight:    post.Highlight,
+		UserID:       post.UserID,
+		CategotyID:   post.CategoryID,
+		ImageID:      post.ImageID,
+		CreateAt:     post.CreateAt,
+		UpdateAt:     post.UpdateAt,
 	}
 	ctx.JSON(http.StatusOK, ret)
 }
 
-func (pc *PostController) EditPost(ctx *gin.Context){
+func (pc *PostController) EditPost(ctx *gin.Context) {
 	postId := ctx.Param("id")
 	if postId == "" {
 		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid input"})
@@ -109,12 +153,12 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 	var payload *models.PostEdit
 
 	if err := ctx.ShouldBindJSON(&payload); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message":err.Error()})
+		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": err.Error()})
 		return
 	}
 
 	if payload.Title == "" || payload.Content == "" {
-		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message":"invalid value"})
+		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid value"})
 		return
 	}
 
@@ -149,22 +193,22 @@ func (pc *PostController) EditPost(ctx *gin.Context){
 	pc.DB.Save(&post)
 
 	ret := models.PostResponse{
-		ID: post.ID,
-		Title: post.Title,
+		ID:           post.ID,
+		Title:        post.Title,
 		ShortContent: post.ShortContent,
-		Content: post.Content,
-		Highlight: post.Highlight,
-		UserID: post.UserID,
-		CategotyID: post.CategoryID,
-		ImageID: post.ImageID,
-		CreateAt: post.CreateAt,
-		UpdateAt: post.UpdateAt,
+		Content:      post.Content,
+		Highlight:    post.Highlight,
+		UserID:       post.UserID,
+		CategotyID:   post.CategoryID,
+		ImageID:      post.ImageID,
+		CreateAt:     post.CreateAt,
+		UpdateAt:     post.UpdateAt,
 	}
 
 	ctx.JSON(http.StatusOK, ret)
 }
 
-func (pc *PostController) DeletePost(ctx *gin.Context){
+func (pc *PostController) DeletePost(ctx *gin.Context) {
 	postId := ctx.Param("id")
 	if postId == "" {
 		ctx.JSON(http.StatusBadRequest, gin.H{"result": "fail", "message": "invalid input"})
