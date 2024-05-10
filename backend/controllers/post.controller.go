@@ -87,7 +87,6 @@ func (pc *PostController) GetAllPost(ctx *gin.Context) {
 	start := (pageInt - 1) * pageSizeInt
 	end := pageInt * pageSizeInt
 
-	// Nếu chỉ số kết thúc lớn hơn tổng số lượng người dùng, điều chỉnh nó
 	if end > len(posts) {
 		end = len(posts)
 	}
