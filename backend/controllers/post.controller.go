@@ -80,9 +80,11 @@ func (pc *PostController) GetAllPost(ctx *gin.Context) {
 	}
 	page := ctx.DefaultQuery("page", "1")
 	pageSize := ctx.DefaultQuery("pageSize", "10")
+	categoryId := ctx.DefaultQuery("category", "-1")
 
 	pageInt := utils.ConvertToInt(page)
 	pageSizeInt := utils.ConvertToInt(pageSize)
+	categoryIdInt := utils.ConvertToInt(categoryId)
 
 	start := (pageInt - 1) * pageSizeInt
 	end := pageInt * pageSizeInt
@@ -92,6 +94,18 @@ func (pc *PostController) GetAllPost(ctx *gin.Context) {
 	}
 
 	paginatedPosts := posts[start:end]
+
+	if categoryIdInt > -1 {
+		var category models.Category
+		categoryResult := pc.DB.Where("id = ?", categoryIdInt).First(&category)
+		if categoryResult.RowsAffected > 0 {
+			for i := len(paginatedPosts) - 1; i >= 0; i-- {
+				if paginatedPosts[i].CategoryID != category.ID {
+					paginatedPosts = append(paginatedPosts[:i], paginatedPosts[i+1:]...)
+				}
+			}
+		}
+	}
 
 	retPosts := []models.PostResponse{}
 	for _, item := range paginatedPosts {
