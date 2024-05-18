@@ -3,6 +3,7 @@ package utils
 import (
 	"crypto/rand"
 	"encoding/hex"
+	"strconv"
 )
 
 func RandomString(n int) (string, error) {
@@ -12,4 +13,12 @@ func RandomString(n int) (string, error) {
 		return "", err
 	}
 	return hex.EncodeToString(bytes), nil
+}
+
+func ConvertToInt(s string) int {
+	i := 1
+	if n, err := strconv.Atoi(s); err == nil {
+		i = n
+	}
+	return i
 }
