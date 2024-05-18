@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ReactQueryClientProvider from "@/components/ReactQueryClientProvider";
 import { Toaster } from "@/components/ui/sonner";
+import NavHeader from "@/components/headerNav/NavHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,10 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div className="max-w-screen flex w-screen h-screen flex-col">
-              {children}
+              <div className="flex w-full flex-col">
+                <NavHeader />
+                {children}
+              </div>
             </div>
             <Toaster richColors />
           </ThemeProvider>

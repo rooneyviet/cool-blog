@@ -7,9 +7,9 @@ import { Menu, Package2, Search } from "lucide-react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { DarkThemeButton } from "../DarkThemeButton";
+import { DarkThemeButton } from "./DarkThemeButton";
 import useUserStore from "@/store/userStore";
-import UserDropdownMenu from "../UserDropdownMenu";
+import UserDropdownMenu from "./UserDropdownMenu";
 
 const NavHeader = () => {
   const { accessToken } = useUserStore((state) => ({
@@ -58,16 +58,18 @@ const NavHeader = () => {
         </SheetContent>
       </Sheet>
       <div className="ml-auto flex items-center gap-4">
-        <form className="">
-          <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search posts..."
-              className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-            />
-          </div>
-        </form>
+        {!accessToken && (
+          <form className="">
+            <div className="relative">
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search posts..."
+                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
+              />
+            </div>
+          </form>
+        )}
         <DarkThemeButton />
         {accessToken ? <UserDropdownMenu /> : <LoginButton />}
       </div>
