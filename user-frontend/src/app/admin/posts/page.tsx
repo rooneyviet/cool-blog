@@ -1,3 +1,4 @@
+import NewPostSidebar from "@/components/admin/posts/NewPostSidebar";
 import React from "react";
 
 const PostsListPage = () => {
