@@ -6,26 +6,26 @@ services:
     container_name: supabase-db-postgres
     ports:
       - 7032:5432
-    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    # command: postgres -c config_file=/etc/postgresql/postgresql.conf
     volumes:
       - supabase-data:/var/lib/postgresql/data
     env_file:
       - .env.dev
 
     # Backend Service
-  api-backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.dev
-    container_name: api-backend
-    volumes:
-      - ./backend:/app
-    ports:
-      - 8010:8080
-    depends_on:
-      - supabase-db-postgres
-    env_file:
-      - ./backend/.env.dev
+  # api-backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile.dev
+  #   container_name: api-backend
+  #   volumes:
+  #     - ./backend:/app
+  #   ports:
+  #     - 8010:8080
+  #   depends_on:
+  #     - supabase-db-postgres
+  #   env_file:
+  #     - ./backend/.env.dev
 
   # Frontend Service
   user-frontend:
@@ -40,8 +40,8 @@ services:
       - ./user-frontend:/app
       # - /app/node_modules
       - /app/.next
-    depends_on:
-      - api-backend
+    # depends_on:
+    #   - api-backend
     env_file:
       - ./user-frontend/.env.dev
 volumes:

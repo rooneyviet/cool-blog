@@ -1,0 +1,28 @@
+meta {
+  name: Login
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: http://localhost:3500/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      access_token,
+      status
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "email": "nguyenvietquan@gmail.com",
+    "password": "vietquan"
+  }
+  
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "blog-graphql",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
