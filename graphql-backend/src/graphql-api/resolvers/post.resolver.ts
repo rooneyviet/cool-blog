@@ -50,13 +50,6 @@ export class PostResolver {
     @Args('postWhereInputArgs') postWhereInputArgs?: PostWhereInput,
     //@Args('orderByArgs') orderByArgs?: Array<PostOrderByWithRelationInput>,
   ) {
-    await this.postService.findMany({
-      include: {
-        author: true,
-      },
-      where: postWhereInputArgs,
-    });
-
     const posts: Post[] = await this.postService.findMany({
       include: {
         author: true,

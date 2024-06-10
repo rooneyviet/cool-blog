@@ -34,12 +34,6 @@ let PostResolver = class PostResolver {
         return this.postService.findUnique(args);
     }
     async listPosts(postWhereInputArgs) {
-        await this.postService.findMany({
-            include: {
-                author: true,
-            },
-            where: postWhereInputArgs,
-        });
         const posts = await this.postService.findMany({
             include: {
                 author: true,
