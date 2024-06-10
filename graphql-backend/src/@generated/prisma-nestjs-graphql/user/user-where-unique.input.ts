@@ -1,6 +1,5 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import * as Validator from 'class-validator';
 import { UserWhereInput } from './user-where.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
@@ -16,12 +15,9 @@ export class UserWhereUniqueInput {
     id?: string;
 
     @Field(() => String, {nullable:true})
-    @Validator.IsNotEmpty()
     email?: string;
 
     @Field(() => String, {nullable:true})
-    @Validator.IsNotEmpty()
-    @Validator.MinLength(4)
     username?: string;
 
     @Field(() => [UserWhereInput], {nullable:true})

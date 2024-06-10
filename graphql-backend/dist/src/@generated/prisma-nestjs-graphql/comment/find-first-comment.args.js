@@ -19,6 +19,7 @@ const client_1 = require("@prisma/client");
 const comment_where_unique_input_1 = require("./comment-where-unique.input");
 const graphql_3 = require("@nestjs/graphql");
 const comment_scalar_field_enum_1 = require("./comment-scalar-field.enum");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let FindFirstCommentArgs = class FindFirstCommentArgs {
 };
 exports.FindFirstCommentArgs = FindFirstCommentArgs;
@@ -47,6 +48,10 @@ __decorate([
     (0, graphql_1.Field)(() => [comment_scalar_field_enum_1.CommentScalarFieldEnum], { nullable: true }),
     __metadata("design:type", Array)
 ], FindFirstCommentArgs.prototype, "distinct", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], FindFirstCommentArgs.prototype, "relationLoadStrategy", void 0);
 exports.FindFirstCommentArgs = FindFirstCommentArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], FindFirstCommentArgs);

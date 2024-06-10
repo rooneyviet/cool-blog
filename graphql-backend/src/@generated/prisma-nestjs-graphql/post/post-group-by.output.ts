@@ -13,8 +13,8 @@ export class PostGroupBy {
     @Field(() => String, {nullable:false})
     id!: string;
 
-    @Field(() => String, {nullable:false})
-    url!: string;
+    @Field(() => String, {nullable:true})
+    url?: string;
 
     @Field(() => Date, {nullable:false})
     createdAt!: Date | string;
@@ -31,8 +31,8 @@ export class PostGroupBy {
     @Field(() => String, {nullable:false})
     title!: string;
 
-    @Field(() => String, {nullable:true})
-    content?: string;
+    @Field(() => String, {nullable:false})
+    content!: string;
 
     @Field(() => String, {nullable:true})
     authorId?: string;

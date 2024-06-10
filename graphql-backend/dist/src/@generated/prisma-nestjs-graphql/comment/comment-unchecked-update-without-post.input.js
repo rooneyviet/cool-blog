@@ -12,15 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentUncheckedUpdateWithoutPostInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
-const int_field_update_operations_input_1 = require("../prisma/int-field-update-operations.input");
 const string_field_update_operations_input_1 = require("../prisma/string-field-update-operations.input");
 const date_time_field_update_operations_input_1 = require("../prisma/date-time-field-update-operations.input");
 let CommentUncheckedUpdateWithoutPostInput = class CommentUncheckedUpdateWithoutPostInput {
 };
 exports.CommentUncheckedUpdateWithoutPostInput = CommentUncheckedUpdateWithoutPostInput;
 __decorate([
-    (0, graphql_1.Field)(() => int_field_update_operations_input_1.IntFieldUpdateOperationsInput, { nullable: true }),
-    __metadata("design:type", int_field_update_operations_input_1.IntFieldUpdateOperationsInput)
+    (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], CommentUncheckedUpdateWithoutPostInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),

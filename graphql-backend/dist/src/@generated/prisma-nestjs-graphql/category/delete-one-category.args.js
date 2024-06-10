@@ -15,6 +15,7 @@ const graphql_2 = require("@nestjs/graphql");
 const client_1 = require("@prisma/client");
 const category_where_unique_input_1 = require("./category-where-unique.input");
 const class_transformer_1 = require("class-transformer");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let DeleteOneCategoryArgs = class DeleteOneCategoryArgs {
 };
 exports.DeleteOneCategoryArgs = DeleteOneCategoryArgs;
@@ -23,6 +24,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => category_where_unique_input_1.CategoryWhereUniqueInput),
     __metadata("design:type", Object)
 ], DeleteOneCategoryArgs.prototype, "where", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], DeleteOneCategoryArgs.prototype, "relationLoadStrategy", void 0);
 exports.DeleteOneCategoryArgs = DeleteOneCategoryArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], DeleteOneCategoryArgs);

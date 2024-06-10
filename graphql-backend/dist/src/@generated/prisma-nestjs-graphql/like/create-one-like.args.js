@@ -14,17 +14,19 @@ const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const like_create_input_1 = require("./like-create.input");
 const class_transformer_1 = require("class-transformer");
-const class_validator_1 = require("class-validator");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let CreateOneLikeArgs = class CreateOneLikeArgs {
 };
 exports.CreateOneLikeArgs = CreateOneLikeArgs;
 __decorate([
     (0, graphql_1.Field)(() => like_create_input_1.LikeCreateInput, { nullable: false }),
     (0, class_transformer_1.Type)(() => like_create_input_1.LikeCreateInput),
-    (0, class_validator_1.ValidateNested)(),
-    (0, class_transformer_1.Type)(() => like_create_input_1.LikeCreateInput),
     __metadata("design:type", like_create_input_1.LikeCreateInput)
 ], CreateOneLikeArgs.prototype, "data", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], CreateOneLikeArgs.prototype, "relationLoadStrategy", void 0);
 exports.CreateOneLikeArgs = CreateOneLikeArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], CreateOneLikeArgs);

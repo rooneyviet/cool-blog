@@ -1,6 +1,5 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { Int } from '@nestjs/graphql';
 import { CommentWhereInput } from './comment-where.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
@@ -10,8 +9,8 @@ import { UserRelationFilter } from '../user/user-relation-filter.input';
 @InputType()
 export class CommentWhereUniqueInput {
 
-    @Field(() => Int, {nullable:true})
-    id?: number;
+    @Field(() => String, {nullable:true})
+    id?: string;
 
     @Field(() => [CommentWhereInput], {nullable:true})
     AND?: Array<CommentWhereInput>;

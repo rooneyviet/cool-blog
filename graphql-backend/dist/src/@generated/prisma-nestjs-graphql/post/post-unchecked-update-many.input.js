@@ -13,10 +13,10 @@ exports.PostUncheckedUpdateManyInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const string_field_update_operations_input_1 = require("../prisma/string-field-update-operations.input");
+const nullable_string_field_update_operations_input_1 = require("../prisma/nullable-string-field-update-operations.input");
 const date_time_field_update_operations_input_1 = require("../prisma/date-time-field-update-operations.input");
 const int_field_update_operations_input_1 = require("../prisma/int-field-update-operations.input");
 const bool_field_update_operations_input_1 = require("../prisma/bool-field-update-operations.input");
-const nullable_string_field_update_operations_input_1 = require("../prisma/nullable-string-field-update-operations.input");
 let PostUncheckedUpdateManyInput = class PostUncheckedUpdateManyInput {
 };
 exports.PostUncheckedUpdateManyInput = PostUncheckedUpdateManyInput;
@@ -25,8 +25,8 @@ __decorate([
     __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateManyInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
-    __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
+    (0, graphql_1.Field)(() => nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput, { nullable: true }),
+    __metadata("design:type", nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateManyInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => date_time_field_update_operations_input_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
@@ -49,8 +49,8 @@ __decorate([
     __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateManyInput.prototype, "title", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput, { nullable: true }),
-    __metadata("design:type", nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput)
+    (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateManyInput.prototype, "content", void 0);
 __decorate([
     (0, graphql_1.Field)(() => nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput, { nullable: true }),

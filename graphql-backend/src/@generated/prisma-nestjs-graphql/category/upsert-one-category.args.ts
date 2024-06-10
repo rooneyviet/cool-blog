@@ -5,6 +5,7 @@ import { CategoryWhereUniqueInput } from './category-where-unique.input';
 import { Type } from 'class-transformer';
 import { CategoryCreateInput } from './category-create.input';
 import { CategoryUpdateInput } from './category-update.input';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class UpsertOneCategoryArgs {
@@ -20,4 +21,7 @@ export class UpsertOneCategoryArgs {
     @Field(() => CategoryUpdateInput, {nullable:false})
     @Type(() => CategoryUpdateInput)
     update!: CategoryUpdateInput;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

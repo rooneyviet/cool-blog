@@ -19,6 +19,7 @@ const client_1 = require("@prisma/client");
 const categories_on_posts_where_unique_input_1 = require("./categories-on-posts-where-unique.input");
 const graphql_3 = require("@nestjs/graphql");
 const categories_on_posts_scalar_field_enum_1 = require("./categories-on-posts-scalar-field.enum");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let FindManyCategoriesOnPostsArgs = class FindManyCategoriesOnPostsArgs {
 };
 exports.FindManyCategoriesOnPostsArgs = FindManyCategoriesOnPostsArgs;
@@ -47,6 +48,10 @@ __decorate([
     (0, graphql_1.Field)(() => [categories_on_posts_scalar_field_enum_1.CategoriesOnPostsScalarFieldEnum], { nullable: true }),
     __metadata("design:type", Array)
 ], FindManyCategoriesOnPostsArgs.prototype, "distinct", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], FindManyCategoriesOnPostsArgs.prototype, "relationLoadStrategy", void 0);
 exports.FindManyCategoriesOnPostsArgs = FindManyCategoriesOnPostsArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], FindManyCategoriesOnPostsArgs);

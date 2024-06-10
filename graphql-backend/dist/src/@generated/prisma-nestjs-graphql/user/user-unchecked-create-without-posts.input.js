@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserUncheckedCreateWithoutPostsInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
-const Validator = require("class-validator");
 const role_enum_1 = require("../prisma/role.enum");
 const like_unchecked_create_nested_many_without_user_input_1 = require("../like/like-unchecked-create-nested-many-without-user.input");
 const comment_unchecked_create_nested_many_without_user_input_1 = require("../comment/comment-unchecked-create-nested-many-without-user.input");
@@ -33,13 +32,10 @@ __decorate([
 ], UserUncheckedCreateWithoutPostsInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
     __metadata("design:type", String)
 ], UserUncheckedCreateWithoutPostsInput.prototype, "email", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.MinLength(4),
     __metadata("design:type", String)
 ], UserUncheckedCreateWithoutPostsInput.prototype, "username", void 0);
 __decorate([
@@ -48,8 +44,6 @@ __decorate([
 ], UserUncheckedCreateWithoutPostsInput.prototype, "userStatus", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.MinLength(8),
     __metadata("design:type", String)
 ], UserUncheckedCreateWithoutPostsInput.prototype, "password", void 0);
 __decorate([

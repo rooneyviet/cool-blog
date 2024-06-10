@@ -5,13 +5,13 @@ import { PostMinAggregate } from './post-min-aggregate.output';
 import { PostMaxAggregate } from './post-max-aggregate.output';
 export declare class PostGroupBy {
     id: string;
-    url: string;
+    url?: string;
     createdAt: Date | string;
     views: number;
     updatedAt: Date | string;
     published: boolean;
     title: string;
-    content?: string;
+    content: string;
     authorId?: string;
     _count?: PostCountAggregate;
     _avg?: PostAvgAggregate;

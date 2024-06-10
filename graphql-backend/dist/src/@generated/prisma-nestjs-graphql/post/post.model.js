@@ -27,7 +27,7 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: true }),
     __metadata("design:type", String)
 ], Post.prototype, "url", void 0);
 __decorate([
@@ -51,7 +51,7 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "title", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: true }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     __metadata("design:type", String)
 ], Post.prototype, "content", void 0);
 __decorate([

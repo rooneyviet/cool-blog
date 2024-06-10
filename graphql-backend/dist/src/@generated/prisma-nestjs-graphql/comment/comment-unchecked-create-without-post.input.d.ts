@@ -1,5 +1,5 @@
 export declare class CommentUncheckedCreateWithoutPostInput {
-    id?: number;
+    id?: string;
     text: string;
     userId: string;
     createdAt?: Date | string;

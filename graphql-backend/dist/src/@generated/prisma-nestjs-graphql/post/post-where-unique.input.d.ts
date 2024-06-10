@@ -19,7 +19,7 @@ export declare class PostWhereUniqueInput {
     updatedAt?: DateTimeFilter;
     published?: BoolFilter;
     title?: StringFilter;
-    content?: StringNullableFilter;
+    content?: StringFilter;
     authorId?: StringNullableFilter;
     author?: UserNullableRelationFilter;
     categories?: CategoriesOnPostsListRelationFilter;

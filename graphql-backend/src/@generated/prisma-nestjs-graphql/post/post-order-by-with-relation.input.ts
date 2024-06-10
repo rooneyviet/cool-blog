@@ -13,8 +13,8 @@ export class PostOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     id?: keyof typeof SortOrder;
 
-    @Field(() => SortOrder, {nullable:true})
-    url?: keyof typeof SortOrder;
+    @Field(() => SortOrderInput, {nullable:true})
+    url?: SortOrderInput;
 
     @Field(() => SortOrder, {nullable:true})
     createdAt?: keyof typeof SortOrder;
@@ -31,8 +31,8 @@ export class PostOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     title?: keyof typeof SortOrder;
 
-    @Field(() => SortOrderInput, {nullable:true})
-    content?: SortOrderInput;
+    @Field(() => SortOrder, {nullable:true})
+    content?: keyof typeof SortOrder;
 
     @Field(() => SortOrderInput, {nullable:true})
     authorId?: SortOrderInput;

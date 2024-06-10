@@ -17,6 +17,7 @@ const user_where_unique_input_1 = require("./user-where-unique.input");
 const class_transformer_1 = require("class-transformer");
 const user_create_input_1 = require("./user-create.input");
 const user_update_input_1 = require("./user-update.input");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let UpsertOneUserArgs = class UpsertOneUserArgs {
 };
 exports.UpsertOneUserArgs = UpsertOneUserArgs;
@@ -35,6 +36,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => user_update_input_1.UserUpdateInput),
     __metadata("design:type", user_update_input_1.UserUpdateInput)
 ], UpsertOneUserArgs.prototype, "update", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], UpsertOneUserArgs.prototype, "relationLoadStrategy", void 0);
 exports.UpsertOneUserArgs = UpsertOneUserArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], UpsertOneUserArgs);

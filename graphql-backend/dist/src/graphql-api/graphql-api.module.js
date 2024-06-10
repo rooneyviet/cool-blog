@@ -11,13 +11,14 @@ const common_1 = require("@nestjs/common");
 const share_module_1 = require("../shared/share.module");
 const auth_resolver_1 = require("./resolvers/auth.resolver");
 const user_resolver_1 = require("./resolvers/user.resolver");
+const post_resolver_1 = require("./resolvers/post.resolver");
 let GraphqlApiModule = class GraphqlApiModule {
 };
 exports.GraphqlApiModule = GraphqlApiModule;
 exports.GraphqlApiModule = GraphqlApiModule = __decorate([
     (0, common_1.Module)({
         imports: [share_module_1.SharedModule],
-        providers: [user_resolver_1.UserResolver, auth_resolver_1.AuthResolver],
+        providers: [user_resolver_1.UserResolver, auth_resolver_1.AuthResolver, post_resolver_1.PostResolver],
         exports: [],
     })
 ], GraphqlApiModule);

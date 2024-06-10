@@ -19,6 +19,7 @@ const client_1 = require("@prisma/client");
 const like_where_unique_input_1 = require("./like-where-unique.input");
 const graphql_3 = require("@nestjs/graphql");
 const like_scalar_field_enum_1 = require("./like-scalar-field.enum");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let FindFirstLikeArgs = class FindFirstLikeArgs {
 };
 exports.FindFirstLikeArgs = FindFirstLikeArgs;
@@ -47,6 +48,10 @@ __decorate([
     (0, graphql_1.Field)(() => [like_scalar_field_enum_1.LikeScalarFieldEnum], { nullable: true }),
     __metadata("design:type", Array)
 ], FindFirstLikeArgs.prototype, "distinct", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], FindFirstLikeArgs.prototype, "relationLoadStrategy", void 0);
 exports.FindFirstLikeArgs = FindFirstLikeArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], FindFirstLikeArgs);

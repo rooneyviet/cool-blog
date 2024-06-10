@@ -4,6 +4,7 @@ import { CategoriesOnPostsUpdateInput } from './categories-on-posts-update.input
 import { Type } from 'class-transformer';
 import { Prisma } from '@prisma/client';
 import { CategoriesOnPostsWhereUniqueInput } from './categories-on-posts-where-unique.input';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class UpdateOneCategoriesOnPostsArgs {
@@ -15,4 +16,7 @@ export class UpdateOneCategoriesOnPostsArgs {
     @Field(() => CategoriesOnPostsWhereUniqueInput, {nullable:false})
     @Type(() => CategoriesOnPostsWhereUniqueInput)
     where!: Prisma.AtLeast<CategoriesOnPostsWhereUniqueInput, 'postId_categoryId'>;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

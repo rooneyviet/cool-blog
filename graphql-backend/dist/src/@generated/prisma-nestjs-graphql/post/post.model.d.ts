@@ -5,13 +5,13 @@ import { Comment } from '../comment/comment.model';
 import { PostCount } from './post-count.output';
 export declare class Post {
     id: string;
-    url: string;
+    url: string | null;
     createdAt: Date;
     views: number;
     updatedAt: Date;
     published: boolean;
     title: string;
-    content: string | null;
+    content: string;
     authorId: string | null;
     author?: User | null;
     categories?: Array<CategoriesOnPosts>;

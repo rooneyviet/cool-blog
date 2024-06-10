@@ -13,10 +13,10 @@ exports.PostScalarWhereWithAggregatesInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const string_with_aggregates_filter_input_1 = require("../prisma/string-with-aggregates-filter.input");
+const string_nullable_with_aggregates_filter_input_1 = require("../prisma/string-nullable-with-aggregates-filter.input");
 const date_time_with_aggregates_filter_input_1 = require("../prisma/date-time-with-aggregates-filter.input");
 const int_with_aggregates_filter_input_1 = require("../prisma/int-with-aggregates-filter.input");
 const bool_with_aggregates_filter_input_1 = require("../prisma/bool-with-aggregates-filter.input");
-const string_nullable_with_aggregates_filter_input_1 = require("../prisma/string-nullable-with-aggregates-filter.input");
 let PostScalarWhereWithAggregatesInput = class PostScalarWhereWithAggregatesInput {
 };
 exports.PostScalarWhereWithAggregatesInput = PostScalarWhereWithAggregatesInput;
@@ -37,8 +37,8 @@ __decorate([
     __metadata("design:type", string_with_aggregates_filter_input_1.StringWithAggregatesFilter)
 ], PostScalarWhereWithAggregatesInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => string_with_aggregates_filter_input_1.StringWithAggregatesFilter, { nullable: true }),
-    __metadata("design:type", string_with_aggregates_filter_input_1.StringWithAggregatesFilter)
+    (0, graphql_1.Field)(() => string_nullable_with_aggregates_filter_input_1.StringNullableWithAggregatesFilter, { nullable: true }),
+    __metadata("design:type", string_nullable_with_aggregates_filter_input_1.StringNullableWithAggregatesFilter)
 ], PostScalarWhereWithAggregatesInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => date_time_with_aggregates_filter_input_1.DateTimeWithAggregatesFilter, { nullable: true }),
@@ -61,8 +61,8 @@ __decorate([
     __metadata("design:type", string_with_aggregates_filter_input_1.StringWithAggregatesFilter)
 ], PostScalarWhereWithAggregatesInput.prototype, "title", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => string_nullable_with_aggregates_filter_input_1.StringNullableWithAggregatesFilter, { nullable: true }),
-    __metadata("design:type", string_nullable_with_aggregates_filter_input_1.StringNullableWithAggregatesFilter)
+    (0, graphql_1.Field)(() => string_with_aggregates_filter_input_1.StringWithAggregatesFilter, { nullable: true }),
+    __metadata("design:type", string_with_aggregates_filter_input_1.StringWithAggregatesFilter)
 ], PostScalarWhereWithAggregatesInput.prototype, "content", void 0);
 __decorate([
     (0, graphql_1.Field)(() => string_nullable_with_aggregates_filter_input_1.StringNullableWithAggregatesFilter, { nullable: true }),

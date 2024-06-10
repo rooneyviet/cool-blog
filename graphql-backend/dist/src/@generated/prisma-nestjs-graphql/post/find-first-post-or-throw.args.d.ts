@@ -3,6 +3,7 @@ import { PostOrderByWithRelationInput } from './post-order-by-with-relation.inpu
 import { Prisma } from '@prisma/client';
 import { PostWhereUniqueInput } from './post-where-unique.input';
 import { PostScalarFieldEnum } from './post-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 export declare class FindFirstPostOrThrowArgs {
     where?: PostWhereInput;
     orderBy?: Array<PostOrderByWithRelationInput>;
@@ -10,4 +11,5 @@ export declare class FindFirstPostOrThrowArgs {
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof PostScalarFieldEnum>;
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

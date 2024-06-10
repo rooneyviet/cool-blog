@@ -12,13 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentMinAggregate = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
-const graphql_3 = require("@nestjs/graphql");
 let CommentMinAggregate = class CommentMinAggregate {
 };
 exports.CommentMinAggregate = CommentMinAggregate;
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true }),
-    __metadata("design:type", Number)
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    __metadata("design:type", String)
 ], CommentMinAggregate.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true }),

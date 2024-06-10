@@ -3,6 +3,7 @@ import { CategoryOrderByWithRelationInput } from './category-order-by-with-relat
 import { Prisma } from '@prisma/client';
 import { CategoryWhereUniqueInput } from './category-where-unique.input';
 import { CategoryScalarFieldEnum } from './category-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 export declare class FindFirstCategoryOrThrowArgs {
     where?: CategoryWhereInput;
     orderBy?: Array<CategoryOrderByWithRelationInput>;
@@ -10,4 +11,5 @@ export declare class FindFirstCategoryOrThrowArgs {
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof CategoryScalarFieldEnum>;
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

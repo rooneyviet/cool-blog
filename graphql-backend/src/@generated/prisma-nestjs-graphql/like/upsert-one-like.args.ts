@@ -5,6 +5,7 @@ import { LikeWhereUniqueInput } from './like-where-unique.input';
 import { Type } from 'class-transformer';
 import { LikeCreateInput } from './like-create.input';
 import { LikeUpdateInput } from './like-update.input';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class UpsertOneLikeArgs {
@@ -20,4 +21,7 @@ export class UpsertOneLikeArgs {
     @Field(() => LikeUpdateInput, {nullable:false})
     @Type(() => LikeUpdateInput)
     update!: LikeUpdateInput;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

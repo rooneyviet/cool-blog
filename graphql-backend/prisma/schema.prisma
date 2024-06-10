@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -37,13 +38,13 @@ model User {
 
 model Post {
   id        String   @id @default(cuid())
-  url          String       @unique
+  url          String?       @unique
   createdAt DateTime @default(now())
   views        Int            @default(0)
   updatedAt DateTime @updatedAt
   published Boolean
   title     String
-  content   String?
+  content   String
   author    User?    @relation(fields: [authorId], references: [id])
   authorId  String?
   categories CategoriesOnPosts[]
@@ -81,7 +82,7 @@ model Like {
 }
 
 model Comment {
-  id        Int   @id @default(autoincrement())
+  id        String   @id @default(cuid())
   text      String
   postId String
   userId    String
@@ -97,16 +98,16 @@ generator nestgraphql {
     output = "../src/@generated/prisma-nestjs-graphql"
     reExport = Directories
 
-    fields_Validator_from = "class-validator"
-    fields_Validator_input = true
-    decorate_1_type        = "CreateOne*Args"
-    decorate_1_field       = data
-    decorate_1_name        = ValidateNested
-    decorate_1_from        = "class-validator"
-    decorate_1_arguments   = "[]"
-    decorate_2_type        = "CreateOne*Args"
-    decorate_2_field       = data
-    decorate_2_from        = "class-transformer"
-    decorate_2_arguments   = "['() => {propertyType.0}']"
-    decorate_2_name        = Type
+    // fields_Validator_from = "class-validator"
+    // fields_Validator_input = true
+    // decorate_1_type        = "CreateOne*Args"
+    // decorate_1_field       = data
+    // decorate_1_name        = ValidateNested
+    // decorate_1_from        = "class-validator"
+    // decorate_1_arguments   = "[]"
+    // decorate_2_type        = "CreateOne*Args"
+    // decorate_2_field       = data
+    // decorate_2_from        = "class-transformer"
+    // decorate_2_arguments   = "['() => {propertyType.0}']"
+    // decorate_2_name        = Type
 }

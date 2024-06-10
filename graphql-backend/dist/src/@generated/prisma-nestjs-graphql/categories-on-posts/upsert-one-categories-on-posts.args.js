@@ -17,6 +17,7 @@ const categories_on_posts_where_unique_input_1 = require("./categories-on-posts-
 const class_transformer_1 = require("class-transformer");
 const categories_on_posts_create_input_1 = require("./categories-on-posts-create.input");
 const categories_on_posts_update_input_1 = require("./categories-on-posts-update.input");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let UpsertOneCategoriesOnPostsArgs = class UpsertOneCategoriesOnPostsArgs {
 };
 exports.UpsertOneCategoriesOnPostsArgs = UpsertOneCategoriesOnPostsArgs;
@@ -35,6 +36,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => categories_on_posts_update_input_1.CategoriesOnPostsUpdateInput),
     __metadata("design:type", categories_on_posts_update_input_1.CategoriesOnPostsUpdateInput)
 ], UpsertOneCategoriesOnPostsArgs.prototype, "update", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], UpsertOneCategoriesOnPostsArgs.prototype, "relationLoadStrategy", void 0);
 exports.UpsertOneCategoriesOnPostsArgs = UpsertOneCategoriesOnPostsArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], UpsertOneCategoriesOnPostsArgs);

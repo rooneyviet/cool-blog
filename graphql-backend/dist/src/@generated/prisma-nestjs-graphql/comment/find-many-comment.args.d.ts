@@ -3,6 +3,7 @@ import { CommentOrderByWithRelationInput } from './comment-order-by-with-relatio
 import { Prisma } from '@prisma/client';
 import { CommentWhereUniqueInput } from './comment-where-unique.input';
 import { CommentScalarFieldEnum } from './comment-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 export declare class FindManyCommentArgs {
     where?: CommentWhereInput;
     orderBy?: Array<CommentOrderByWithRelationInput>;
@@ -10,4 +11,5 @@ export declare class FindManyCommentArgs {
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof CommentScalarFieldEnum>;
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

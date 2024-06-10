@@ -3,6 +3,7 @@ import { CategoriesOnPostsOrderByWithRelationInput } from './categories-on-posts
 import { Prisma } from '@prisma/client';
 import { CategoriesOnPostsWhereUniqueInput } from './categories-on-posts-where-unique.input';
 import { CategoriesOnPostsScalarFieldEnum } from './categories-on-posts-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 export declare class FindFirstCategoriesOnPostsOrThrowArgs {
     where?: CategoriesOnPostsWhereInput;
     orderBy?: Array<CategoriesOnPostsOrderByWithRelationInput>;
@@ -10,4 +11,5 @@ export declare class FindFirstCategoriesOnPostsOrThrowArgs {
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof CategoriesOnPostsScalarFieldEnum>;
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

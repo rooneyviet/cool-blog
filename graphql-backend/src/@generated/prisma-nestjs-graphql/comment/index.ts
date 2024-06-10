@@ -1,8 +1,5 @@
 export { AggregateComment } from './aggregate-comment.output';
 export { CommentAggregateArgs } from './comment-aggregate.args';
-export { CommentAvgAggregateInput } from './comment-avg-aggregate.input';
-export { CommentAvgAggregate } from './comment-avg-aggregate.output';
-export { CommentAvgOrderByAggregateInput } from './comment-avg-order-by-aggregate.input';
 export { CommentCountAggregateInput } from './comment-count-aggregate.input';
 export { CommentCountAggregate } from './comment-count-aggregate.output';
 export { CommentCountOrderByAggregateInput } from './comment-count-order-by-aggregate.input';
@@ -33,9 +30,6 @@ export { CommentOrderByWithRelationInput } from './comment-order-by-with-relatio
 export { CommentScalarFieldEnum } from './comment-scalar-field.enum';
 export { CommentScalarWhereWithAggregatesInput } from './comment-scalar-where-with-aggregates.input';
 export { CommentScalarWhereInput } from './comment-scalar-where.input';
-export { CommentSumAggregateInput } from './comment-sum-aggregate.input';
-export { CommentSumAggregate } from './comment-sum-aggregate.output';
-export { CommentSumOrderByAggregateInput } from './comment-sum-order-by-aggregate.input';
 export { CommentUncheckedCreateNestedManyWithoutPostInput } from './comment-unchecked-create-nested-many-without-post.input';
 export { CommentUncheckedCreateNestedManyWithoutUserInput } from './comment-unchecked-create-nested-many-without-user.input';
 export { CommentUncheckedCreateWithoutPostInput } from './comment-unchecked-create-without-post.input';

@@ -42,7 +42,7 @@ __decorate([
 ], AuthResolver.prototype, "login", null);
 __decorate([
     (0, graphql_1.Mutation)(() => user_1.User, { nullable: false }),
-    __param(0, (0, graphql_1.Args)('registerUser')),
+    __param(0, (0, graphql_1.Args)('userCreateInput')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [user_1.UserCreateInput]),
     __metadata("design:returntype", void 0)

@@ -14,8 +14,9 @@ export class AuthResolver {
   async login(@Args() args: LoginArgs) {
     return this.userService.login(args);
   }
+
   @Mutation(() => User, { nullable: false })
-  registerUser(@Args('registerUser') args: UserCreateInput) {
+  registerUser(@Args('userCreateInput') args: UserCreateInput) {
     const userCreateArgs: CreateOneUserArgs = {
       data: args,
     };

@@ -19,6 +19,7 @@ const client_1 = require("@prisma/client");
 const category_where_unique_input_1 = require("./category-where-unique.input");
 const graphql_3 = require("@nestjs/graphql");
 const category_scalar_field_enum_1 = require("./category-scalar-field.enum");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let FindFirstCategoryArgs = class FindFirstCategoryArgs {
 };
 exports.FindFirstCategoryArgs = FindFirstCategoryArgs;
@@ -47,6 +48,10 @@ __decorate([
     (0, graphql_1.Field)(() => [category_scalar_field_enum_1.CategoryScalarFieldEnum], { nullable: true }),
     __metadata("design:type", Array)
 ], FindFirstCategoryArgs.prototype, "distinct", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], FindFirstCategoryArgs.prototype, "relationLoadStrategy", void 0);
 exports.FindFirstCategoryArgs = FindFirstCategoryArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], FindFirstCategoryArgs);

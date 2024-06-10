@@ -14,17 +14,19 @@ const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const comment_create_input_1 = require("./comment-create.input");
 const class_transformer_1 = require("class-transformer");
-const class_validator_1 = require("class-validator");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let CreateOneCommentArgs = class CreateOneCommentArgs {
 };
 exports.CreateOneCommentArgs = CreateOneCommentArgs;
 __decorate([
     (0, graphql_1.Field)(() => comment_create_input_1.CommentCreateInput, { nullable: false }),
     (0, class_transformer_1.Type)(() => comment_create_input_1.CommentCreateInput),
-    (0, class_validator_1.ValidateNested)(),
-    (0, class_transformer_1.Type)(() => comment_create_input_1.CommentCreateInput),
     __metadata("design:type", comment_create_input_1.CommentCreateInput)
 ], CreateOneCommentArgs.prototype, "data", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], CreateOneCommentArgs.prototype, "relationLoadStrategy", void 0);
 exports.CreateOneCommentArgs = CreateOneCommentArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], CreateOneCommentArgs);

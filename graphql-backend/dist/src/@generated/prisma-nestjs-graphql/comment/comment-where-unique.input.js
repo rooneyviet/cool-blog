@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentWhereUniqueInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
-const graphql_3 = require("@nestjs/graphql");
 const comment_where_input_1 = require("./comment-where.input");
 const string_filter_input_1 = require("../prisma/string-filter.input");
 const date_time_filter_input_1 = require("../prisma/date-time-filter.input");
@@ -22,8 +21,8 @@ let CommentWhereUniqueInput = class CommentWhereUniqueInput {
 };
 exports.CommentWhereUniqueInput = CommentWhereUniqueInput;
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true }),
-    __metadata("design:type", Number)
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    __metadata("design:type", String)
 ], CommentWhereUniqueInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => [comment_where_input_1.CommentWhereInput], { nullable: true }),

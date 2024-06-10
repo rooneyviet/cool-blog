@@ -7,6 +7,7 @@ import { Prisma } from '@prisma/client';
 import { CategoryWhereUniqueInput } from './category-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { CategoryScalarFieldEnum } from './category-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class FindManyCategoryArgs {
@@ -29,4 +30,7 @@ export class FindManyCategoryArgs {
 
     @Field(() => [CategoryScalarFieldEnum], {nullable:true})
     distinct?: Array<keyof typeof CategoryScalarFieldEnum>;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

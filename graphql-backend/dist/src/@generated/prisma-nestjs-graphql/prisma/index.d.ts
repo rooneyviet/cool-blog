@@ -28,6 +28,7 @@ export { NestedStringWithAggregatesFilter } from './nested-string-with-aggregate
 export { NullableStringFieldUpdateOperationsInput } from './nullable-string-field-update-operations.input';
 export { NullsOrder } from './nulls-order.enum';
 export { QueryMode } from './query-mode.enum';
+export { RelationLoadStrategy } from './relation-load-strategy.enum';
 export { Role } from './role.enum';
 export { SortOrder } from './sort-order.enum';
 export { SortOrderInput } from './sort-order.input';

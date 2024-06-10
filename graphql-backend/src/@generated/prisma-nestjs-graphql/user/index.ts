@@ -53,6 +53,7 @@ export { UserUncheckedUpdateInput } from './user-unchecked-update.input';
 export { UserUpdateManyMutationInput } from './user-update-many-mutation.input';
 export { UserUpdateOneRequiredWithoutCommentsNestedInput } from './user-update-one-required-without-comments-nested.input';
 export { UserUpdateOneRequiredWithoutLikesNestedInput } from './user-update-one-required-without-likes-nested.input';
+export { UserUpdateOneRequiredWithoutPostsNestedInput } from './user-update-one-required-without-posts-nested.input';
 export { UserUpdateOneWithoutPostsNestedInput } from './user-update-one-without-posts-nested.input';
 export { UserUpdateToOneWithWhereWithoutCommentsInput } from './user-update-to-one-with-where-without-comments.input';
 export { UserUpdateToOneWithWhereWithoutLikesInput } from './user-update-to-one-with-where-without-likes.input';

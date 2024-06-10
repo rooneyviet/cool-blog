@@ -2,6 +2,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { PostUpdateOneRequiredWithoutCommentsNestedInput } from '../post/post-update-one-required-without-comments-nested.input';
 export declare class CommentUpdateWithoutUserInput {
+    id?: StringFieldUpdateOperationsInput;
     text?: StringFieldUpdateOperationsInput;
     createdAt?: DateTimeFieldUpdateOperationsInput;
     updatedAt?: DateTimeFieldUpdateOperationsInput;

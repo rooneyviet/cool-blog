@@ -7,6 +7,7 @@ import { Prisma } from '@prisma/client';
 import { LikeWhereUniqueInput } from './like-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { LikeScalarFieldEnum } from './like-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class FindFirstLikeArgs {
@@ -29,4 +30,7 @@ export class FindFirstLikeArgs {
 
     @Field(() => [LikeScalarFieldEnum], {nullable:true})
     distinct?: Array<keyof typeof LikeScalarFieldEnum>;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

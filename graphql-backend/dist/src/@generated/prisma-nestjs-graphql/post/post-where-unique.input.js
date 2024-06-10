@@ -66,8 +66,8 @@ __decorate([
     __metadata("design:type", string_filter_input_1.StringFilter)
 ], PostWhereUniqueInput.prototype, "title", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => string_nullable_filter_input_1.StringNullableFilter, { nullable: true }),
-    __metadata("design:type", string_nullable_filter_input_1.StringNullableFilter)
+    (0, graphql_1.Field)(() => string_filter_input_1.StringFilter, { nullable: true }),
+    __metadata("design:type", string_filter_input_1.StringFilter)
 ], PostWhereUniqueInput.prototype, "content", void 0);
 __decorate([
     (0, graphql_1.Field)(() => string_nullable_filter_input_1.StringNullableFilter, { nullable: true }),

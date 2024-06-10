@@ -9,6 +9,9 @@ import { UserUpdateOneRequiredWithoutCommentsNestedInput } from '../user/user-up
 export class CommentUpdateInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    id?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     text?: StringFieldUpdateOperationsInput;
 
     @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})

@@ -7,6 +7,9 @@ import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-up
 export class CommentUpdateManyMutationInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    id?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     text?: StringFieldUpdateOperationsInput;
 
     @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})

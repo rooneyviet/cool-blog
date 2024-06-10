@@ -18,6 +18,10 @@ let CommentCreateInput = class CommentCreateInput {
 };
 exports.CommentCreateInput = CommentCreateInput;
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    __metadata("design:type", String)
+], CommentCreateInput.prototype, "id", void 0);
+__decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
     __metadata("design:type", String)
 ], CommentCreateInput.prototype, "text", void 0);

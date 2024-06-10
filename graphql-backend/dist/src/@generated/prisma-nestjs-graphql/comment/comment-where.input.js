@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentWhereInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
-const int_filter_input_1 = require("../prisma/int-filter.input");
 const string_filter_input_1 = require("../prisma/string-filter.input");
 const date_time_filter_input_1 = require("../prisma/date-time-filter.input");
 const post_relation_filter_input_1 = require("../post/post-relation-filter.input");
@@ -33,8 +32,8 @@ __decorate([
     __metadata("design:type", Array)
 ], CommentWhereInput.prototype, "NOT", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => int_filter_input_1.IntFilter, { nullable: true }),
-    __metadata("design:type", int_filter_input_1.IntFilter)
+    (0, graphql_1.Field)(() => string_filter_input_1.StringFilter, { nullable: true }),
+    __metadata("design:type", string_filter_input_1.StringFilter)
 ], CommentWhereInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => string_filter_input_1.StringFilter, { nullable: true }),

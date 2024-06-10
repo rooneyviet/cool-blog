@@ -20,7 +20,7 @@ let Comment = class Comment {
 exports.Comment = Comment;
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.ID, { nullable: false }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Comment.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),

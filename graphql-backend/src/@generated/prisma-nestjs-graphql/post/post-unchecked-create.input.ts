@@ -11,8 +11,8 @@ export class PostUncheckedCreateInput {
     @Field(() => String, {nullable:true})
     id?: string;
 
-    @Field(() => String, {nullable:false})
-    url!: string;
+    @Field(() => String, {nullable:true})
+    url?: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
@@ -29,8 +29,8 @@ export class PostUncheckedCreateInput {
     @Field(() => String, {nullable:false})
     title!: string;
 
-    @Field(() => String, {nullable:true})
-    content?: string;
+    @Field(() => String, {nullable:false})
+    content!: string;
 
     @Field(() => String, {nullable:true})
     authorId?: string;

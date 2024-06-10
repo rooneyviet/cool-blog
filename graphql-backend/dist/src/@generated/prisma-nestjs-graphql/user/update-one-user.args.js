@@ -16,6 +16,7 @@ const user_update_input_1 = require("./user-update.input");
 const class_transformer_1 = require("class-transformer");
 const client_1 = require("@prisma/client");
 const user_where_unique_input_1 = require("./user-where-unique.input");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let UpdateOneUserArgs = class UpdateOneUserArgs {
 };
 exports.UpdateOneUserArgs = UpdateOneUserArgs;
@@ -29,6 +30,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => user_where_unique_input_1.UserWhereUniqueInput),
     __metadata("design:type", Object)
 ], UpdateOneUserArgs.prototype, "where", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], UpdateOneUserArgs.prototype, "relationLoadStrategy", void 0);
 exports.UpdateOneUserArgs = UpdateOneUserArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], UpdateOneUserArgs);

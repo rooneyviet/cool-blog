@@ -16,6 +16,7 @@ const comment_update_input_1 = require("./comment-update.input");
 const class_transformer_1 = require("class-transformer");
 const client_1 = require("@prisma/client");
 const comment_where_unique_input_1 = require("./comment-where-unique.input");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let UpdateOneCommentArgs = class UpdateOneCommentArgs {
 };
 exports.UpdateOneCommentArgs = UpdateOneCommentArgs;
@@ -29,6 +30,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => comment_where_unique_input_1.CommentWhereUniqueInput),
     __metadata("design:type", Object)
 ], UpdateOneCommentArgs.prototype, "where", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], UpdateOneCommentArgs.prototype, "relationLoadStrategy", void 0);
 exports.UpdateOneCommentArgs = UpdateOneCommentArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], UpdateOneCommentArgs);

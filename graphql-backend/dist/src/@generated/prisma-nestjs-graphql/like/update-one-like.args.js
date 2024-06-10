@@ -16,6 +16,7 @@ const like_update_input_1 = require("./like-update.input");
 const class_transformer_1 = require("class-transformer");
 const client_1 = require("@prisma/client");
 const like_where_unique_input_1 = require("./like-where-unique.input");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let UpdateOneLikeArgs = class UpdateOneLikeArgs {
 };
 exports.UpdateOneLikeArgs = UpdateOneLikeArgs;
@@ -29,6 +30,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => like_where_unique_input_1.LikeWhereUniqueInput),
     __metadata("design:type", Object)
 ], UpdateOneLikeArgs.prototype, "where", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], UpdateOneLikeArgs.prototype, "relationLoadStrategy", void 0);
 exports.UpdateOneLikeArgs = UpdateOneLikeArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], UpdateOneLikeArgs);

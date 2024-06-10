@@ -16,6 +16,7 @@ const category_update_input_1 = require("./category-update.input");
 const class_transformer_1 = require("class-transformer");
 const client_1 = require("@prisma/client");
 const category_where_unique_input_1 = require("./category-where-unique.input");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let UpdateOneCategoryArgs = class UpdateOneCategoryArgs {
 };
 exports.UpdateOneCategoryArgs = UpdateOneCategoryArgs;
@@ -29,6 +30,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => category_where_unique_input_1.CategoryWhereUniqueInput),
     __metadata("design:type", Object)
 ], UpdateOneCategoryArgs.prototype, "where", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], UpdateOneCategoryArgs.prototype, "relationLoadStrategy", void 0);
 exports.UpdateOneCategoryArgs = UpdateOneCategoryArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], UpdateOneCategoryArgs);

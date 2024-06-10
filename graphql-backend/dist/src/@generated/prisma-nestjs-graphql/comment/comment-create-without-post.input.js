@@ -17,6 +17,10 @@ let CommentCreateWithoutPostInput = class CommentCreateWithoutPostInput {
 };
 exports.CommentCreateWithoutPostInput = CommentCreateWithoutPostInput;
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    __metadata("design:type", String)
+], CommentCreateWithoutPostInput.prototype, "id", void 0);
+__decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
     __metadata("design:type", String)
 ], CommentCreateWithoutPostInput.prototype, "text", void 0);

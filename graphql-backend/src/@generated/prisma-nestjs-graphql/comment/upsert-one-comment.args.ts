@@ -5,6 +5,7 @@ import { CommentWhereUniqueInput } from './comment-where-unique.input';
 import { Type } from 'class-transformer';
 import { CommentCreateInput } from './comment-create.input';
 import { CommentUpdateInput } from './comment-update.input';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class UpsertOneCommentArgs {
@@ -20,4 +21,7 @@ export class UpsertOneCommentArgs {
     @Field(() => CommentUpdateInput, {nullable:false})
     @Type(() => CommentUpdateInput)
     update!: CommentUpdateInput;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserWhereUniqueInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
-const Validator = require("class-validator");
 const user_where_input_1 = require("./user-where.input");
 const date_time_filter_input_1 = require("../prisma/date-time-filter.input");
 const string_filter_input_1 = require("../prisma/string-filter.input");
@@ -29,13 +28,10 @@ __decorate([
 ], UserWhereUniqueInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true }),
-    Validator.IsNotEmpty(),
     __metadata("design:type", String)
 ], UserWhereUniqueInput.prototype, "email", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true }),
-    Validator.IsNotEmpty(),
-    Validator.MinLength(4),
     __metadata("design:type", String)
 ], UserWhereUniqueInput.prototype, "username", void 0);
 __decorate([

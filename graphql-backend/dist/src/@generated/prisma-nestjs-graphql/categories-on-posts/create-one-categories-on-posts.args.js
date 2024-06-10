@@ -14,17 +14,19 @@ const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const categories_on_posts_create_input_1 = require("./categories-on-posts-create.input");
 const class_transformer_1 = require("class-transformer");
-const class_validator_1 = require("class-validator");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let CreateOneCategoriesOnPostsArgs = class CreateOneCategoriesOnPostsArgs {
 };
 exports.CreateOneCategoriesOnPostsArgs = CreateOneCategoriesOnPostsArgs;
 __decorate([
     (0, graphql_1.Field)(() => categories_on_posts_create_input_1.CategoriesOnPostsCreateInput, { nullable: false }),
     (0, class_transformer_1.Type)(() => categories_on_posts_create_input_1.CategoriesOnPostsCreateInput),
-    (0, class_validator_1.ValidateNested)(),
-    (0, class_transformer_1.Type)(() => categories_on_posts_create_input_1.CategoriesOnPostsCreateInput),
     __metadata("design:type", categories_on_posts_create_input_1.CategoriesOnPostsCreateInput)
 ], CreateOneCategoriesOnPostsArgs.prototype, "data", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], CreateOneCategoriesOnPostsArgs.prototype, "relationLoadStrategy", void 0);
 exports.CreateOneCategoriesOnPostsArgs = CreateOneCategoriesOnPostsArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], CreateOneCategoriesOnPostsArgs);

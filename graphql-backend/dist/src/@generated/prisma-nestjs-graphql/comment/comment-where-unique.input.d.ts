@@ -4,7 +4,7 @@ import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { PostRelationFilter } from '../post/post-relation-filter.input';
 import { UserRelationFilter } from '../user/user-relation-filter.input';
 export declare class CommentWhereUniqueInput {
-    id?: number;
+    id?: string;
     AND?: Array<CommentWhereInput>;
     OR?: Array<CommentWhereInput>;
     NOT?: Array<CommentWhereInput>;

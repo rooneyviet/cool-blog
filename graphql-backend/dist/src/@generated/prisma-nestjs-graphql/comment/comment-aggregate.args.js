@@ -19,8 +19,6 @@ const client_1 = require("@prisma/client");
 const comment_where_unique_input_1 = require("./comment-where-unique.input");
 const graphql_3 = require("@nestjs/graphql");
 const comment_count_aggregate_input_1 = require("./comment-count-aggregate.input");
-const comment_avg_aggregate_input_1 = require("./comment-avg-aggregate.input");
-const comment_sum_aggregate_input_1 = require("./comment-sum-aggregate.input");
 const comment_min_aggregate_input_1 = require("./comment-min-aggregate.input");
 const comment_max_aggregate_input_1 = require("./comment-max-aggregate.input");
 let CommentAggregateArgs = class CommentAggregateArgs {
@@ -51,14 +49,6 @@ __decorate([
     (0, graphql_1.Field)(() => comment_count_aggregate_input_1.CommentCountAggregateInput, { nullable: true }),
     __metadata("design:type", comment_count_aggregate_input_1.CommentCountAggregateInput)
 ], CommentAggregateArgs.prototype, "_count", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => comment_avg_aggregate_input_1.CommentAvgAggregateInput, { nullable: true }),
-    __metadata("design:type", comment_avg_aggregate_input_1.CommentAvgAggregateInput)
-], CommentAggregateArgs.prototype, "_avg", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => comment_sum_aggregate_input_1.CommentSumAggregateInput, { nullable: true }),
-    __metadata("design:type", comment_sum_aggregate_input_1.CommentSumAggregateInput)
-], CommentAggregateArgs.prototype, "_sum", void 0);
 __decorate([
     (0, graphql_1.Field)(() => comment_min_aggregate_input_1.CommentMinAggregateInput, { nullable: true }),
     __metadata("design:type", comment_min_aggregate_input_1.CommentMinAggregateInput)

@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentScalarWhereWithAggregatesInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
-const int_with_aggregates_filter_input_1 = require("../prisma/int-with-aggregates-filter.input");
 const string_with_aggregates_filter_input_1 = require("../prisma/string-with-aggregates-filter.input");
 const date_time_with_aggregates_filter_input_1 = require("../prisma/date-time-with-aggregates-filter.input");
 let CommentScalarWhereWithAggregatesInput = class CommentScalarWhereWithAggregatesInput {
@@ -31,8 +30,8 @@ __decorate([
     __metadata("design:type", Array)
 ], CommentScalarWhereWithAggregatesInput.prototype, "NOT", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => int_with_aggregates_filter_input_1.IntWithAggregatesFilter, { nullable: true }),
-    __metadata("design:type", int_with_aggregates_filter_input_1.IntWithAggregatesFilter)
+    (0, graphql_1.Field)(() => string_with_aggregates_filter_input_1.StringWithAggregatesFilter, { nullable: true }),
+    __metadata("design:type", string_with_aggregates_filter_input_1.StringWithAggregatesFilter)
 ], CommentScalarWhereWithAggregatesInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => string_with_aggregates_filter_input_1.StringWithAggregatesFilter, { nullable: true }),

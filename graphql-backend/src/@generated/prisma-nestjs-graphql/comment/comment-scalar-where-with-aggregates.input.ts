@@ -1,6 +1,5 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.input';
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
 import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 
@@ -16,8 +15,8 @@ export class CommentScalarWhereWithAggregatesInput {
     @Field(() => [CommentScalarWhereWithAggregatesInput], {nullable:true})
     NOT?: Array<CommentScalarWhereWithAggregatesInput>;
 
-    @Field(() => IntWithAggregatesFilter, {nullable:true})
-    id?: IntWithAggregatesFilter;
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    id?: StringWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     text?: StringWithAggregatesFilter;

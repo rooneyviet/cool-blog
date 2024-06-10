@@ -7,6 +7,7 @@ import { Prisma } from '@prisma/client';
 import { CategoriesOnPostsWhereUniqueInput } from './categories-on-posts-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { CategoriesOnPostsScalarFieldEnum } from './categories-on-posts-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class FindFirstCategoriesOnPostsArgs {
@@ -29,4 +30,7 @@ export class FindFirstCategoriesOnPostsArgs {
 
     @Field(() => [CategoriesOnPostsScalarFieldEnum], {nullable:true})
     distinct?: Array<keyof typeof CategoriesOnPostsScalarFieldEnum>;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

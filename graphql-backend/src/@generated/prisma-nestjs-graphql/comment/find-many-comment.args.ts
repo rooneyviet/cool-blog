@@ -7,6 +7,7 @@ import { Prisma } from '@prisma/client';
 import { CommentWhereUniqueInput } from './comment-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { CommentScalarFieldEnum } from './comment-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 
 @ArgsType()
 export class FindManyCommentArgs {
@@ -29,4 +30,7 @@ export class FindManyCommentArgs {
 
     @Field(() => [CommentScalarFieldEnum], {nullable:true})
     distinct?: Array<keyof typeof CommentScalarFieldEnum>;
+
+    @Field(() => RelationLoadStrategy, {nullable:true})
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

@@ -14,10 +14,8 @@ const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const sort_order_enum_1 = require("../prisma/sort-order.enum");
 const comment_count_order_by_aggregate_input_1 = require("./comment-count-order-by-aggregate.input");
-const comment_avg_order_by_aggregate_input_1 = require("./comment-avg-order-by-aggregate.input");
 const comment_max_order_by_aggregate_input_1 = require("./comment-max-order-by-aggregate.input");
 const comment_min_order_by_aggregate_input_1 = require("./comment-min-order-by-aggregate.input");
-const comment_sum_order_by_aggregate_input_1 = require("./comment-sum-order-by-aggregate.input");
 let CommentOrderByWithAggregationInput = class CommentOrderByWithAggregationInput {
 };
 exports.CommentOrderByWithAggregationInput = CommentOrderByWithAggregationInput;
@@ -50,10 +48,6 @@ __decorate([
     __metadata("design:type", comment_count_order_by_aggregate_input_1.CommentCountOrderByAggregateInput)
 ], CommentOrderByWithAggregationInput.prototype, "_count", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => comment_avg_order_by_aggregate_input_1.CommentAvgOrderByAggregateInput, { nullable: true }),
-    __metadata("design:type", comment_avg_order_by_aggregate_input_1.CommentAvgOrderByAggregateInput)
-], CommentOrderByWithAggregationInput.prototype, "_avg", void 0);
-__decorate([
     (0, graphql_1.Field)(() => comment_max_order_by_aggregate_input_1.CommentMaxOrderByAggregateInput, { nullable: true }),
     __metadata("design:type", comment_max_order_by_aggregate_input_1.CommentMaxOrderByAggregateInput)
 ], CommentOrderByWithAggregationInput.prototype, "_max", void 0);
@@ -61,10 +55,6 @@ __decorate([
     (0, graphql_1.Field)(() => comment_min_order_by_aggregate_input_1.CommentMinOrderByAggregateInput, { nullable: true }),
     __metadata("design:type", comment_min_order_by_aggregate_input_1.CommentMinOrderByAggregateInput)
 ], CommentOrderByWithAggregationInput.prototype, "_min", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => comment_sum_order_by_aggregate_input_1.CommentSumOrderByAggregateInput, { nullable: true }),
-    __metadata("design:type", comment_sum_order_by_aggregate_input_1.CommentSumOrderByAggregateInput)
-], CommentOrderByWithAggregationInput.prototype, "_sum", void 0);
 exports.CommentOrderByWithAggregationInput = CommentOrderByWithAggregationInput = __decorate([
     (0, graphql_2.InputType)()
 ], CommentOrderByWithAggregationInput);

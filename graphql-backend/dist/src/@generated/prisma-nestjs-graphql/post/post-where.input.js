@@ -13,10 +13,10 @@ exports.PostWhereInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const string_filter_input_1 = require("../prisma/string-filter.input");
+const string_nullable_filter_input_1 = require("../prisma/string-nullable-filter.input");
 const date_time_filter_input_1 = require("../prisma/date-time-filter.input");
 const int_filter_input_1 = require("../prisma/int-filter.input");
 const bool_filter_input_1 = require("../prisma/bool-filter.input");
-const string_nullable_filter_input_1 = require("../prisma/string-nullable-filter.input");
 const user_nullable_relation_filter_input_1 = require("../user/user-nullable-relation-filter.input");
 const categories_on_posts_list_relation_filter_input_1 = require("../categories-on-posts/categories-on-posts-list-relation-filter.input");
 const like_list_relation_filter_input_1 = require("../like/like-list-relation-filter.input");
@@ -41,8 +41,8 @@ __decorate([
     __metadata("design:type", string_filter_input_1.StringFilter)
 ], PostWhereInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => string_filter_input_1.StringFilter, { nullable: true }),
-    __metadata("design:type", string_filter_input_1.StringFilter)
+    (0, graphql_1.Field)(() => string_nullable_filter_input_1.StringNullableFilter, { nullable: true }),
+    __metadata("design:type", string_nullable_filter_input_1.StringNullableFilter)
 ], PostWhereInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => date_time_filter_input_1.DateTimeFilter, { nullable: true }),
@@ -65,8 +65,8 @@ __decorate([
     __metadata("design:type", string_filter_input_1.StringFilter)
 ], PostWhereInput.prototype, "title", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => string_nullable_filter_input_1.StringNullableFilter, { nullable: true }),
-    __metadata("design:type", string_nullable_filter_input_1.StringNullableFilter)
+    (0, graphql_1.Field)(() => string_filter_input_1.StringFilter, { nullable: true }),
+    __metadata("design:type", string_filter_input_1.StringFilter)
 ], PostWhereInput.prototype, "content", void 0);
 __decorate([
     (0, graphql_1.Field)(() => string_nullable_filter_input_1.StringNullableFilter, { nullable: true }),

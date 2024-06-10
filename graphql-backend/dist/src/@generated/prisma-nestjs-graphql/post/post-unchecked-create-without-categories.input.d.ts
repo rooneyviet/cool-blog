@@ -2,13 +2,13 @@ import { LikeUncheckedCreateNestedManyWithoutPostInput } from '../like/like-unch
 import { CommentUncheckedCreateNestedManyWithoutPostInput } from '../comment/comment-unchecked-create-nested-many-without-post.input';
 export declare class PostUncheckedCreateWithoutCategoriesInput {
     id?: string;
-    url: string;
+    url?: string;
     createdAt?: Date | string;
     views?: number;
     updatedAt?: Date | string;
     published: boolean;
     title: string;
-    content?: string;
+    content: string;
     authorId?: string;
     likes?: LikeUncheckedCreateNestedManyWithoutPostInput;
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput;

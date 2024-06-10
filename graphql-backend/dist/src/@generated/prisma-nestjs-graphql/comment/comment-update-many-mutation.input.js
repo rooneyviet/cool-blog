@@ -20,6 +20,10 @@ exports.CommentUpdateManyMutationInput = CommentUpdateManyMutationInput;
 __decorate([
     (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
     __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
+], CommentUpdateManyMutationInput.prototype, "id", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], CommentUpdateManyMutationInput.prototype, "text", void 0);
 __decorate([
     (0, graphql_1.Field)(() => date_time_field_update_operations_input_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),

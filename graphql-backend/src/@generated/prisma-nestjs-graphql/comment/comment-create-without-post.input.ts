@@ -5,6 +5,9 @@ import { UserCreateNestedOneWithoutCommentsInput } from '../user/user-create-nes
 @InputType()
 export class CommentCreateWithoutPostInput {
 
+    @Field(() => String, {nullable:true})
+    id?: string;
+
     @Field(() => String, {nullable:false})
     text!: string;
 

@@ -26,8 +26,8 @@ __decorate([
     __metadata("design:type", Object)
 ], PostOrderByWithRelationInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => sort_order_enum_1.SortOrder, { nullable: true }),
-    __metadata("design:type", Object)
+    (0, graphql_1.Field)(() => sort_order_input_1.SortOrderInput, { nullable: true }),
+    __metadata("design:type", sort_order_input_1.SortOrderInput)
 ], PostOrderByWithRelationInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => sort_order_enum_1.SortOrder, { nullable: true }),
@@ -50,8 +50,8 @@ __decorate([
     __metadata("design:type", Object)
 ], PostOrderByWithRelationInput.prototype, "title", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => sort_order_input_1.SortOrderInput, { nullable: true }),
-    __metadata("design:type", sort_order_input_1.SortOrderInput)
+    (0, graphql_1.Field)(() => sort_order_enum_1.SortOrder, { nullable: true }),
+    __metadata("design:type", Object)
 ], PostOrderByWithRelationInput.prototype, "content", void 0);
 __decorate([
     (0, graphql_1.Field)(() => sort_order_input_1.SortOrderInput, { nullable: true }),

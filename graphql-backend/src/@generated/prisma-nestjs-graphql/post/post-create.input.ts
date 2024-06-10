@@ -12,8 +12,8 @@ export class PostCreateInput {
     @Field(() => String, {nullable:true})
     id?: string;
 
-    @Field(() => String, {nullable:false})
-    url!: string;
+    @Field(() => String, {nullable:true})
+    url?: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
@@ -30,8 +30,8 @@ export class PostCreateInput {
     @Field(() => String, {nullable:false})
     title!: string;
 
-    @Field(() => String, {nullable:true})
-    content?: string;
+    @Field(() => String, {nullable:false})
+    content!: string;
 
     @Field(() => UserCreateNestedOneWithoutPostsInput, {nullable:true})
     author?: UserCreateNestedOneWithoutPostsInput;

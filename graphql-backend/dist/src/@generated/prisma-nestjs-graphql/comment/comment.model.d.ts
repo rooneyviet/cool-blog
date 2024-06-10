@@ -1,7 +1,7 @@
 import { Post } from '../post/post.model';
 import { User } from '../user/user.model';
 export declare class Comment {
-    id: number;
+    id: string;
     text: string;
     postId: string;
     userId: string;

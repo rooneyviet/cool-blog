@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UserService } from './services/user.service';
+import { PostService } from './services/post.service';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { UserService } from './services/user.service';
       signOptions: { expiresIn: '2days' },
     }),
   ],
-  providers: [PrismaService, UserService],
-  exports: [PrismaService, UserService],
+  providers: [PrismaService, UserService, PostService],
+  exports: [PrismaService, UserService, PostService],
 })
 export class SharedModule {}

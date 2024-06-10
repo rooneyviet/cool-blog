@@ -19,6 +19,7 @@ const client_1 = require("@prisma/client");
 const user_where_unique_input_1 = require("./user-where-unique.input");
 const graphql_3 = require("@nestjs/graphql");
 const user_scalar_field_enum_1 = require("./user-scalar-field.enum");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let FindManyUserArgs = class FindManyUserArgs {
 };
 exports.FindManyUserArgs = FindManyUserArgs;
@@ -47,6 +48,10 @@ __decorate([
     (0, graphql_1.Field)(() => [user_scalar_field_enum_1.UserScalarFieldEnum], { nullable: true }),
     __metadata("design:type", Array)
 ], FindManyUserArgs.prototype, "distinct", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], FindManyUserArgs.prototype, "relationLoadStrategy", void 0);
 exports.FindManyUserArgs = FindManyUserArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], FindManyUserArgs);

@@ -1,5 +1,5 @@
 export declare class CommentCreateManyUserInput {
-    id?: number;
+    id?: string;
     text: string;
     postId: string;
     createdAt?: Date | string;

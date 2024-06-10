@@ -128,13 +128,13 @@ type PostCount {
 
 type Post {
   id: ID!
-  url: String!
+  url: String
   createdAt: DateTime!
   views: Int!
   updatedAt: DateTime!
   published: Boolean!
   title: String!
-  content: String
+  content: String!
   authorId: String
   author: User
   categories: [CategoriesOnPosts!]
@@ -169,15 +169,90 @@ type AffectedRows {
   count: Int!
 }
 
+type PostCountAggregate {
+  id: Int!
+  url: Int!
+  createdAt: Int!
+  views: Int!
+  updatedAt: Int!
+  published: Int!
+  title: Int!
+  content: Int!
+  authorId: Int!
+  _all: Int!
+}
+
+type PostAvgAggregate {
+  views: Float
+}
+
+type PostSumAggregate {
+  views: Int
+}
+
+type PostMinAggregate {
+  id: String
+  url: String
+  createdAt: DateTime
+  views: Int
+  updatedAt: DateTime
+  published: Boolean
+  title: String
+  content: String
+  authorId: String
+}
+
+type PostMaxAggregate {
+  id: String
+  url: String
+  createdAt: DateTime
+  views: Int
+  updatedAt: DateTime
+  published: Boolean
+  title: String
+  content: String
+  authorId: String
+}
+
+type AggregatePost {
+  _count: PostCountAggregate
+  _avg: PostAvgAggregate
+  _sum: PostSumAggregate
+  _min: PostMinAggregate
+  _max: PostMaxAggregate
+}
+
+type PostGroupBy {
+  id: String!
+  url: String
+  createdAt: DateTime!
+  views: Int!
+  updatedAt: DateTime!
+  published: Boolean!
+  title: String!
+  content: String!
+  authorId: String
+  _count: PostCountAggregate
+  _avg: PostAvgAggregate
+  _sum: PostSumAggregate
+  _min: PostMinAggregate
+  _max: PostMaxAggregate
+}
+
 type Query {
   recipe(id: String!): Recipe!
   recipes(skip: Int! = 0, take: Int! = 25): [Recipe!]!
-  findFirstUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): User!
-  findUniqueUser(where: UserWhereUniqueInput!): User!
-  listUsers(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): [User!]!
+  findFirstUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!], relationLoadStrategy: RelationLoadStrategy): User!
+  findUniqueUser(where: UserWhereUniqueInput!, relationLoadStrategy: RelationLoadStrategy): User!
+  listUsers(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!], relationLoadStrategy: RelationLoadStrategy): [User!]!
   groupByUser(where: UserWhereInput, orderBy: [UserOrderByWithAggregationInput!], by: [UserScalarFieldEnum!]!, having: UserScalarWhereWithAggregatesInput, take: Int, skip: Int, _count: UserCountAggregateInput, _min: UserMinAggregateInput, _max: UserMaxAggregateInput): [UserGroupBy!]!
   aggregateUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, _count: UserCountAggregateInput, _min: UserMinAggregateInput, _max: UserMaxAggregateInput): AggregateUser!
   login(email: String!, password: String!): LoginDataResponse!
+  findFirstPost(where: PostWhereInput, orderBy: [PostOrderByWithRelationInput!], cursor: PostWhereUniqueInput, take: Int, skip: Int, distinct: [PostScalarFieldEnum!], relationLoadStrategy: RelationLoadStrategy): Post!
+  findUniquePost(where: PostWhereUniqueInput!, relationLoadStrategy: RelationLoadStrategy): Post!
+  listPosts(postWhereInputArgs: PostWhereInput!): [Post!]!
+  groupByPost(where: PostWhereInput, orderBy: [PostOrderByWithAggregationInput!], by: [PostScalarFieldEnum!]!, having: PostScalarWhereWithAggregatesInput, take: Int, skip: Int, _count: PostCountAggregateInput, _avg: PostAvgAggregateInput, _sum: PostSumAggregateInput, _min: PostMinAggregateInput, _max: PostMaxAggregateInput): [PostGroupBy!]!
+  aggregatePost(where: PostWhereInput, orderBy: [PostOrderByWithRelationInput!], cursor: PostWhereUniqueInput, take: Int, skip: Int, _count: PostCountAggregateInput, _avg: PostAvgAggregateInput, _sum: PostSumAggregateInput, _min: PostMinAggregateInput, _max: PostMaxAggregateInput): AggregatePost!
 }
 
 input UserWhereInput {
@@ -278,18 +353,47 @@ input PostWhereInput {
   OR: [PostWhereInput!]
   NOT: [PostWhereInput!]
   id: StringFilter
-  url: StringFilter
+  url: StringNullableFilter
   createdAt: DateTimeFilter
   views: IntFilter
   updatedAt: DateTimeFilter
   published: BoolFilter
   title: StringFilter
-  content: StringNullableFilter
+  content: StringFilter
   authorId: StringNullableFilter
   author: UserNullableRelationFilter
   categories: CategoriesOnPostsListRelationFilter
   likes: LikeListRelationFilter
   comments: CommentListRelationFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
 }
 
 input IntFilter {
@@ -322,35 +426,6 @@ input BoolFilter {
 input NestedBoolFilter {
   equals: Boolean
   not: NestedBoolFilter
-}
-
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  mode: QueryMode
-  not: NestedStringNullableFilter
-}
-
-input NestedStringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringNullableFilter
 }
 
 input UserNullableRelationFilter {
@@ -430,7 +505,7 @@ input CommentWhereInput {
   AND: [CommentWhereInput!]
   OR: [CommentWhereInput!]
   NOT: [CommentWhereInput!]
-  id: IntFilter
+  id: StringFilter
   text: StringFilter
   postId: StringFilter
   userId: StringFilter
@@ -497,6 +572,11 @@ enum UserScalarFieldEnum {
   userStatus
   password
   role
+}
+
+enum RelationLoadStrategy {
+  query
+  join
 }
 
 input UserOrderByWithAggregationInput {
@@ -677,16 +757,309 @@ input UserMaxAggregateInput {
   role: Boolean
 }
 
+input PostOrderByWithRelationInput {
+  id: SortOrder
+  url: SortOrderInput
+  createdAt: SortOrder
+  views: SortOrder
+  updatedAt: SortOrder
+  published: SortOrder
+  title: SortOrder
+  content: SortOrder
+  authorId: SortOrderInput
+  author: UserOrderByWithRelationInput
+  categories: CategoriesOnPostsOrderByRelationAggregateInput
+  likes: LikeOrderByRelationAggregateInput
+  comments: CommentOrderByRelationAggregateInput
+}
+
+input SortOrderInput {
+  sort: SortOrder!
+  nulls: NullsOrder
+}
+
+enum NullsOrder {
+  first
+  last
+}
+
+input CategoriesOnPostsOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input PostWhereUniqueInput {
+  id: String
+  url: String
+  AND: [PostWhereInput!]
+  OR: [PostWhereInput!]
+  NOT: [PostWhereInput!]
+  createdAt: DateTimeFilter
+  views: IntFilter
+  updatedAt: DateTimeFilter
+  published: BoolFilter
+  title: StringFilter
+  content: StringFilter
+  authorId: StringNullableFilter
+  author: UserNullableRelationFilter
+  categories: CategoriesOnPostsListRelationFilter
+  likes: LikeListRelationFilter
+  comments: CommentListRelationFilter
+}
+
+enum PostScalarFieldEnum {
+  id
+  url
+  createdAt
+  views
+  updatedAt
+  published
+  title
+  content
+  authorId
+}
+
+input PostOrderByWithAggregationInput {
+  id: SortOrder
+  url: SortOrderInput
+  createdAt: SortOrder
+  views: SortOrder
+  updatedAt: SortOrder
+  published: SortOrder
+  title: SortOrder
+  content: SortOrder
+  authorId: SortOrderInput
+  _count: PostCountOrderByAggregateInput
+  _avg: PostAvgOrderByAggregateInput
+  _max: PostMaxOrderByAggregateInput
+  _min: PostMinOrderByAggregateInput
+  _sum: PostSumOrderByAggregateInput
+}
+
+input PostCountOrderByAggregateInput {
+  id: SortOrder
+  url: SortOrder
+  createdAt: SortOrder
+  views: SortOrder
+  updatedAt: SortOrder
+  published: SortOrder
+  title: SortOrder
+  content: SortOrder
+  authorId: SortOrder
+}
+
+input PostAvgOrderByAggregateInput {
+  views: SortOrder
+}
+
+input PostMaxOrderByAggregateInput {
+  id: SortOrder
+  url: SortOrder
+  createdAt: SortOrder
+  views: SortOrder
+  updatedAt: SortOrder
+  published: SortOrder
+  title: SortOrder
+  content: SortOrder
+  authorId: SortOrder
+}
+
+input PostMinOrderByAggregateInput {
+  id: SortOrder
+  url: SortOrder
+  createdAt: SortOrder
+  views: SortOrder
+  updatedAt: SortOrder
+  published: SortOrder
+  title: SortOrder
+  content: SortOrder
+  authorId: SortOrder
+}
+
+input PostSumOrderByAggregateInput {
+  views: SortOrder
+}
+
+input PostScalarWhereWithAggregatesInput {
+  AND: [PostScalarWhereWithAggregatesInput!]
+  OR: [PostScalarWhereWithAggregatesInput!]
+  NOT: [PostScalarWhereWithAggregatesInput!]
+  id: StringWithAggregatesFilter
+  url: StringNullableWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  views: IntWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  published: BoolWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  content: StringWithAggregatesFilter
+  authorId: StringNullableWithAggregatesFilter
+}
+
+input StringNullableWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedStringNullableFilter
+  _max: NestedStringNullableFilter
+}
+
+input NestedStringNullableWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _min: NestedStringNullableFilter
+  _max: NestedStringNullableFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input IntWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntWithAggregatesFilter
+  _count: NestedIntFilter
+  _avg: NestedFloatFilter
+  _sum: NestedIntFilter
+  _min: NestedIntFilter
+  _max: NestedIntFilter
+}
+
+input NestedIntWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntWithAggregatesFilter
+  _count: NestedIntFilter
+  _avg: NestedFloatFilter
+  _sum: NestedIntFilter
+  _min: NestedIntFilter
+  _max: NestedIntFilter
+}
+
+input NestedFloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatFilter
+}
+
+input BoolWithAggregatesFilter {
+  equals: Boolean
+  not: NestedBoolWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedBoolFilter
+  _max: NestedBoolFilter
+}
+
+input NestedBoolWithAggregatesFilter {
+  equals: Boolean
+  not: NestedBoolWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedBoolFilter
+  _max: NestedBoolFilter
+}
+
+input PostCountAggregateInput {
+  id: Boolean
+  url: Boolean
+  createdAt: Boolean
+  views: Boolean
+  updatedAt: Boolean
+  published: Boolean
+  title: Boolean
+  content: Boolean
+  authorId: Boolean
+  _all: Boolean
+}
+
+input PostAvgAggregateInput {
+  views: Boolean
+}
+
+input PostSumAggregateInput {
+  views: Boolean
+}
+
+input PostMinAggregateInput {
+  id: Boolean
+  url: Boolean
+  createdAt: Boolean
+  views: Boolean
+  updatedAt: Boolean
+  published: Boolean
+  title: Boolean
+  content: Boolean
+  authorId: Boolean
+}
+
+input PostMaxAggregateInput {
+  id: Boolean
+  url: Boolean
+  createdAt: Boolean
+  views: Boolean
+  updatedAt: Boolean
+  published: Boolean
+  title: Boolean
+  content: Boolean
+  authorId: Boolean
+}
+
 type Mutation {
   addRecipe(newRecipeData: NewRecipeInput!): Recipe!
   removeRecipe(id: String!): Boolean!
-  createUser(data: UserCreateInput!): User
+  createUser(data: UserCreateInput!, relationLoadStrategy: RelationLoadStrategy): User
   createManyUser(data: [UserCreateManyInput!]!, skipDuplicates: Boolean): AffectedRows
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!, relationLoadStrategy: RelationLoadStrategy): User
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRows
-  deleteUser(where: UserWhereUniqueInput!): User
+  deleteUser(where: UserWhereUniqueInput!, relationLoadStrategy: RelationLoadStrategy): User
   deleteManyUser(where: UserWhereInput): AffectedRows
-  registerUser(registerUser: UserCreateInput!): User!
+  registerUser(userCreateInput: UserCreateInput!): User!
+  createPost(postCreateInput: PostCreateInput!): Post
+  createManyPost(data: [PostCreateManyInput!]!, skipDuplicates: Boolean): AffectedRows
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!, relationLoadStrategy: RelationLoadStrategy): Post
+  updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): AffectedRows
+  deletePost(where: PostWhereUniqueInput!, relationLoadStrategy: RelationLoadStrategy): Post
+  deleteManyPost(where: PostWhereInput): AffectedRows
 }
 
 input NewRecipeInput {
@@ -718,13 +1091,13 @@ input PostCreateNestedManyWithoutAuthorInput {
 
 input PostCreateWithoutAuthorInput {
   id: String
-  url: String!
+  url: String
   createdAt: DateTime
   views: Int
   updatedAt: DateTime
   published: Boolean!
   title: String!
-  content: String
+  content: String!
   categories: CategoriesOnPostsCreateNestedManyWithoutPostInput
   likes: LikeCreateNestedManyWithoutPostInput
   comments: CommentCreateNestedManyWithoutPostInput
@@ -845,6 +1218,7 @@ input CommentCreateNestedManyWithoutUserInput {
 }
 
 input CommentCreateWithoutUserInput {
+  id: String
   text: String!
   createdAt: DateTime
   updatedAt: DateTime
@@ -859,13 +1233,13 @@ input PostCreateNestedOneWithoutCommentsInput {
 
 input PostCreateWithoutCommentsInput {
   id: String
-  url: String!
+  url: String
   createdAt: DateTime
   views: Int
   updatedAt: DateTime
   published: Boolean!
   title: String!
-  content: String
+  content: String!
   author: UserCreateNestedOneWithoutPostsInput
   categories: CategoriesOnPostsCreateNestedManyWithoutPostInput
   likes: LikeCreateNestedManyWithoutPostInput
@@ -912,13 +1286,13 @@ input PostCreateNestedOneWithoutLikesInput {
 
 input PostCreateWithoutLikesInput {
   id: String
-  url: String!
+  url: String
   createdAt: DateTime
   views: Int
   updatedAt: DateTime
   published: Boolean!
   title: String!
-  content: String
+  content: String!
   author: UserCreateNestedOneWithoutPostsInput
   categories: CategoriesOnPostsCreateNestedManyWithoutPostInput
   comments: CommentCreateNestedManyWithoutPostInput
@@ -932,6 +1306,7 @@ input CommentCreateNestedManyWithoutPostInput {
 }
 
 input CommentCreateWithoutPostInput {
+  id: String
   text: String!
   createdAt: DateTime
   updatedAt: DateTime
@@ -968,7 +1343,7 @@ input CommentCreateOrConnectWithoutPostInput {
 }
 
 input CommentWhereUniqueInput {
-  id: Int
+  id: String
   AND: [CommentWhereInput!]
   OR: [CommentWhereInput!]
   NOT: [CommentWhereInput!]
@@ -987,7 +1362,7 @@ input CommentCreateManyPostInputEnvelope {
 }
 
 input CommentCreateManyPostInput {
-  id: Int
+  id: String
   text: String!
   userId: String!
   createdAt: DateTime
@@ -997,25 +1372,6 @@ input CommentCreateManyPostInput {
 input PostCreateOrConnectWithoutLikesInput {
   where: PostWhereUniqueInput!
   create: PostCreateWithoutLikesInput!
-}
-
-input PostWhereUniqueInput {
-  id: String
-  url: String
-  AND: [PostWhereInput!]
-  OR: [PostWhereInput!]
-  NOT: [PostWhereInput!]
-  createdAt: DateTimeFilter
-  views: IntFilter
-  updatedAt: DateTimeFilter
-  published: BoolFilter
-  title: StringFilter
-  content: StringNullableFilter
-  authorId: StringNullableFilter
-  author: UserNullableRelationFilter
-  categories: CategoriesOnPostsListRelationFilter
-  likes: LikeListRelationFilter
-  comments: CommentListRelationFilter
 }
 
 input LikeCreateOrConnectWithoutUserInput {
@@ -1069,7 +1425,7 @@ input CommentCreateManyUserInputEnvelope {
 }
 
 input CommentCreateManyUserInput {
-  id: Int
+  id: String
   text: String!
   postId: String!
   createdAt: DateTime
@@ -1110,13 +1466,13 @@ input PostCreateManyAuthorInputEnvelope {
 
 input PostCreateManyAuthorInput {
   id: String
-  url: String!
+  url: String
   createdAt: DateTime
   views: Int
   updatedAt: DateTime
   published: Boolean!
   title: String!
-  content: String
+  content: String!
 }
 
 input UserCreateManyInput {
@@ -1178,16 +1534,20 @@ input PostUpsertWithWhereUniqueWithoutAuthorInput {
 
 input PostUpdateWithoutAuthorInput {
   id: StringFieldUpdateOperationsInput
-  url: StringFieldUpdateOperationsInput
+  url: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   views: IntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
-  content: NullableStringFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
   categories: CategoriesOnPostsUpdateManyWithoutPostNestedInput
   likes: LikeUpdateManyWithoutPostNestedInput
   comments: CommentUpdateManyWithoutPostNestedInput
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
 }
 
 input IntFieldUpdateOperationsInput {
@@ -1200,10 +1560,6 @@ input IntFieldUpdateOperationsInput {
 
 input BoolFieldUpdateOperationsInput {
   set: Boolean
-}
-
-input NullableStringFieldUpdateOperationsInput {
-  set: String
 }
 
 input CategoriesOnPostsUpdateManyWithoutPostNestedInput {
@@ -1357,6 +1713,7 @@ input CommentUpsertWithWhereUniqueWithoutUserInput {
 }
 
 input CommentUpdateWithoutUserInput {
+  id: StringFieldUpdateOperationsInput
   text: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -1379,13 +1736,13 @@ input PostUpsertWithoutCommentsInput {
 
 input PostUpdateWithoutCommentsInput {
   id: StringFieldUpdateOperationsInput
-  url: StringFieldUpdateOperationsInput
+  url: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   views: IntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
-  content: NullableStringFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
   author: UserUpdateOneWithoutPostsNestedInput
   categories: CategoriesOnPostsUpdateManyWithoutPostNestedInput
   likes: LikeUpdateManyWithoutPostNestedInput
@@ -1463,13 +1820,13 @@ input PostUpsertWithoutLikesInput {
 
 input PostUpdateWithoutLikesInput {
   id: StringFieldUpdateOperationsInput
-  url: StringFieldUpdateOperationsInput
+  url: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   views: IntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
-  content: NullableStringFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
   author: UserUpdateOneWithoutPostsNestedInput
   categories: CategoriesOnPostsUpdateManyWithoutPostNestedInput
   comments: CommentUpdateManyWithoutPostNestedInput
@@ -1496,6 +1853,7 @@ input CommentUpsertWithWhereUniqueWithoutPostInput {
 }
 
 input CommentUpdateWithoutPostInput {
+  id: StringFieldUpdateOperationsInput
   text: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -1548,7 +1906,7 @@ input CommentScalarWhereInput {
   AND: [CommentScalarWhereInput!]
   OR: [CommentScalarWhereInput!]
   NOT: [CommentScalarWhereInput!]
-  id: IntFilter
+  id: StringFilter
   text: StringFilter
   postId: StringFilter
   userId: StringFilter
@@ -1557,6 +1915,7 @@ input CommentScalarWhereInput {
 }
 
 input CommentUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
   text: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -1644,25 +2003,25 @@ input PostScalarWhereInput {
   OR: [PostScalarWhereInput!]
   NOT: [PostScalarWhereInput!]
   id: StringFilter
-  url: StringFilter
+  url: StringNullableFilter
   createdAt: DateTimeFilter
   views: IntFilter
   updatedAt: DateTimeFilter
   published: BoolFilter
   title: StringFilter
-  content: StringNullableFilter
+  content: StringFilter
   authorId: StringNullableFilter
 }
 
 input PostUpdateManyMutationInput {
   id: StringFieldUpdateOperationsInput
-  url: StringFieldUpdateOperationsInput
+  url: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   views: IntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
-  content: NullableStringFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyMutationInput {
@@ -1674,6 +2033,48 @@ input UserUpdateManyMutationInput {
   userStatus: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   role: EnumRoleFieldUpdateOperationsInput
+}
+
+input PostCreateInput {
+  id: String
+  url: String
+  createdAt: DateTime
+  views: Int
+  updatedAt: DateTime
+  published: Boolean!
+  title: String!
+  content: String!
+  author: UserCreateNestedOneWithoutPostsInput
+  categories: CategoriesOnPostsCreateNestedManyWithoutPostInput
+  likes: LikeCreateNestedManyWithoutPostInput
+  comments: CommentCreateNestedManyWithoutPostInput
+}
+
+input PostCreateManyInput {
+  id: String
+  url: String
+  createdAt: DateTime
+  views: Int
+  updatedAt: DateTime
+  published: Boolean!
+  title: String!
+  content: String!
+  authorId: String
+}
+
+input PostUpdateInput {
+  id: StringFieldUpdateOperationsInput
+  url: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  views: IntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
+  author: UserUpdateOneWithoutPostsNestedInput
+  categories: CategoriesOnPostsUpdateManyWithoutPostNestedInput
+  likes: LikeUpdateManyWithoutPostNestedInput
+  comments: CommentUpdateManyWithoutPostNestedInput
 }
 
 type Subscription {

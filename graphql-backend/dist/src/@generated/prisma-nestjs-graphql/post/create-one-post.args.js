@@ -14,17 +14,19 @@ const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const post_create_input_1 = require("./post-create.input");
 const class_transformer_1 = require("class-transformer");
-const class_validator_1 = require("class-validator");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let CreateOnePostArgs = class CreateOnePostArgs {
 };
 exports.CreateOnePostArgs = CreateOnePostArgs;
 __decorate([
     (0, graphql_1.Field)(() => post_create_input_1.PostCreateInput, { nullable: false }),
     (0, class_transformer_1.Type)(() => post_create_input_1.PostCreateInput),
-    (0, class_validator_1.ValidateNested)(),
-    (0, class_transformer_1.Type)(() => post_create_input_1.PostCreateInput),
     __metadata("design:type", post_create_input_1.PostCreateInput)
 ], CreateOnePostArgs.prototype, "data", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], CreateOnePostArgs.prototype, "relationLoadStrategy", void 0);
 exports.CreateOnePostArgs = CreateOnePostArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], CreateOnePostArgs);

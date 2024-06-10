@@ -21,6 +21,10 @@ exports.CommentUpdateWithoutUserInput = CommentUpdateWithoutUserInput;
 __decorate([
     (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
     __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
+], CommentUpdateWithoutUserInput.prototype, "id", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], CommentUpdateWithoutUserInput.prototype, "text", void 0);
 __decorate([
     (0, graphql_1.Field)(() => date_time_field_update_operations_input_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),

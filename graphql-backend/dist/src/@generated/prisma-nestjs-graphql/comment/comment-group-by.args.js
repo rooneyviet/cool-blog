@@ -19,8 +19,6 @@ const comment_scalar_field_enum_1 = require("./comment-scalar-field.enum");
 const comment_scalar_where_with_aggregates_input_1 = require("./comment-scalar-where-with-aggregates.input");
 const graphql_3 = require("@nestjs/graphql");
 const comment_count_aggregate_input_1 = require("./comment-count-aggregate.input");
-const comment_avg_aggregate_input_1 = require("./comment-avg-aggregate.input");
-const comment_sum_aggregate_input_1 = require("./comment-sum-aggregate.input");
 const comment_min_aggregate_input_1 = require("./comment-min-aggregate.input");
 const comment_max_aggregate_input_1 = require("./comment-max-aggregate.input");
 let CommentGroupByArgs = class CommentGroupByArgs {
@@ -55,14 +53,6 @@ __decorate([
     (0, graphql_1.Field)(() => comment_count_aggregate_input_1.CommentCountAggregateInput, { nullable: true }),
     __metadata("design:type", comment_count_aggregate_input_1.CommentCountAggregateInput)
 ], CommentGroupByArgs.prototype, "_count", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => comment_avg_aggregate_input_1.CommentAvgAggregateInput, { nullable: true }),
-    __metadata("design:type", comment_avg_aggregate_input_1.CommentAvgAggregateInput)
-], CommentGroupByArgs.prototype, "_avg", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => comment_sum_aggregate_input_1.CommentSumAggregateInput, { nullable: true }),
-    __metadata("design:type", comment_sum_aggregate_input_1.CommentSumAggregateInput)
-], CommentGroupByArgs.prototype, "_sum", void 0);
 __decorate([
     (0, graphql_1.Field)(() => comment_min_aggregate_input_1.CommentMinAggregateInput, { nullable: true }),
     __metadata("design:type", comment_min_aggregate_input_1.CommentMinAggregateInput)

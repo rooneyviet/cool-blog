@@ -6,13 +6,13 @@ import { LikeOrderByRelationAggregateInput } from '../like/like-order-by-relatio
 import { CommentOrderByRelationAggregateInput } from '../comment/comment-order-by-relation-aggregate.input';
 export declare class PostOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
-    url?: keyof typeof SortOrder;
+    url?: SortOrderInput;
     createdAt?: keyof typeof SortOrder;
     views?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     published?: keyof typeof SortOrder;
     title?: keyof typeof SortOrder;
-    content?: SortOrderInput;
+    content?: keyof typeof SortOrder;
     authorId?: SortOrderInput;
     author?: UserOrderByWithRelationInput;
     categories?: CategoriesOnPostsOrderByRelationAggregateInput;

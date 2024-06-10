@@ -8,6 +8,9 @@ import { PostUpdateOneRequiredWithoutCommentsNestedInput } from '../post/post-up
 export class CommentUpdateWithoutUserInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    id?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     text?: StringFieldUpdateOperationsInput;
 
     @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})

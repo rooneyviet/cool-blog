@@ -7,8 +7,6 @@ import { Prisma } from '@prisma/client';
 import { CommentWhereUniqueInput } from './comment-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { CommentCountAggregateInput } from './comment-count-aggregate.input';
-import { CommentAvgAggregateInput } from './comment-avg-aggregate.input';
-import { CommentSumAggregateInput } from './comment-sum-aggregate.input';
 import { CommentMinAggregateInput } from './comment-min-aggregate.input';
 import { CommentMaxAggregateInput } from './comment-max-aggregate.input';
 
@@ -33,12 +31,6 @@ export class CommentAggregateArgs {
 
     @Field(() => CommentCountAggregateInput, {nullable:true})
     _count?: CommentCountAggregateInput;
-
-    @Field(() => CommentAvgAggregateInput, {nullable:true})
-    _avg?: CommentAvgAggregateInput;
-
-    @Field(() => CommentSumAggregateInput, {nullable:true})
-    _sum?: CommentSumAggregateInput;
 
     @Field(() => CommentMinAggregateInput, {nullable:true})
     _min?: CommentMinAggregateInput;

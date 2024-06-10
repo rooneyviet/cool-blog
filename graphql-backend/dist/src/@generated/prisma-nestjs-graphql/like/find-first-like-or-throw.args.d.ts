@@ -3,6 +3,7 @@ import { LikeOrderByWithRelationInput } from './like-order-by-with-relation.inpu
 import { Prisma } from '@prisma/client';
 import { LikeWhereUniqueInput } from './like-where-unique.input';
 import { LikeScalarFieldEnum } from './like-scalar-field.enum';
+import { RelationLoadStrategy } from '../prisma/relation-load-strategy.enum';
 export declare class FindFirstLikeOrThrowArgs {
     where?: LikeWhereInput;
     orderBy?: Array<LikeOrderByWithRelationInput>;
@@ -10,4 +11,5 @@ export declare class FindFirstLikeOrThrowArgs {
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof LikeScalarFieldEnum>;
+    relationLoadStrategy?: keyof typeof RelationLoadStrategy;
 }

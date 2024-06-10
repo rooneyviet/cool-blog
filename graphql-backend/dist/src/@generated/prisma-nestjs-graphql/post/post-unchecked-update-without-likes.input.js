@@ -13,10 +13,10 @@ exports.PostUncheckedUpdateWithoutLikesInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const string_field_update_operations_input_1 = require("../prisma/string-field-update-operations.input");
+const nullable_string_field_update_operations_input_1 = require("../prisma/nullable-string-field-update-operations.input");
 const date_time_field_update_operations_input_1 = require("../prisma/date-time-field-update-operations.input");
 const int_field_update_operations_input_1 = require("../prisma/int-field-update-operations.input");
 const bool_field_update_operations_input_1 = require("../prisma/bool-field-update-operations.input");
-const nullable_string_field_update_operations_input_1 = require("../prisma/nullable-string-field-update-operations.input");
 const categories_on_posts_unchecked_update_many_without_post_nested_input_1 = require("../categories-on-posts/categories-on-posts-unchecked-update-many-without-post-nested.input");
 const comment_unchecked_update_many_without_post_nested_input_1 = require("../comment/comment-unchecked-update-many-without-post-nested.input");
 let PostUncheckedUpdateWithoutLikesInput = class PostUncheckedUpdateWithoutLikesInput {
@@ -27,8 +27,8 @@ __decorate([
     __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateWithoutLikesInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
-    __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
+    (0, graphql_1.Field)(() => nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput, { nullable: true }),
+    __metadata("design:type", nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateWithoutLikesInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => date_time_field_update_operations_input_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
@@ -51,8 +51,8 @@ __decorate([
     __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateWithoutLikesInput.prototype, "title", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput, { nullable: true }),
-    __metadata("design:type", nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput)
+    (0, graphql_1.Field)(() => string_field_update_operations_input_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    __metadata("design:type", string_field_update_operations_input_1.StringFieldUpdateOperationsInput)
 ], PostUncheckedUpdateWithoutLikesInput.prototype, "content", void 0);
 __decorate([
     (0, graphql_1.Field)(() => nullable_string_field_update_operations_input_1.NullableStringFieldUpdateOperationsInput, { nullable: true }),

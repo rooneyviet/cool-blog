@@ -7,13 +7,13 @@ import { PostMinOrderByAggregateInput } from './post-min-order-by-aggregate.inpu
 import { PostSumOrderByAggregateInput } from './post-sum-order-by-aggregate.input';
 export declare class PostOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
-    url?: keyof typeof SortOrder;
+    url?: SortOrderInput;
     createdAt?: keyof typeof SortOrder;
     views?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     published?: keyof typeof SortOrder;
     title?: keyof typeof SortOrder;
-    content?: SortOrderInput;
+    content?: keyof typeof SortOrder;
     authorId?: SortOrderInput;
     _count?: PostCountOrderByAggregateInput;
     _avg?: PostAvgOrderByAggregateInput;

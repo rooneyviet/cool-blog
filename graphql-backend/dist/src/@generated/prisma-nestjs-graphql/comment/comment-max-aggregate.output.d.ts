@@ -1,5 +1,5 @@
 export declare class CommentMaxAggregate {
-    id?: number;
+    id?: string;
     text?: string;
     postId?: string;
     userId?: string;

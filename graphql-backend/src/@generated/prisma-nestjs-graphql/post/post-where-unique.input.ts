@@ -44,8 +44,8 @@ export class PostWhereUniqueInput {
     @Field(() => StringFilter, {nullable:true})
     title?: StringFilter;
 
-    @Field(() => StringNullableFilter, {nullable:true})
-    content?: StringNullableFilter;
+    @Field(() => StringFilter, {nullable:true})
+    content?: StringFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
     authorId?: StringNullableFilter;

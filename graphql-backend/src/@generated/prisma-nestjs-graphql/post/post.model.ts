@@ -14,8 +14,8 @@ export class Post {
     @Field(() => ID, {nullable:false})
     id!: string;
 
-    @Field(() => String, {nullable:false})
-    url!: string;
+    @Field(() => String, {nullable:true})
+    url!: string | null;
 
     @Field(() => Date, {nullable:false})
     createdAt!: Date;
@@ -32,8 +32,8 @@ export class Post {
     @Field(() => String, {nullable:false})
     title!: string;
 
-    @Field(() => String, {nullable:true})
-    content!: string | null;
+    @Field(() => String, {nullable:false})
+    content!: string;
 
     @Field(() => String, {nullable:true})
     authorId!: string | null;

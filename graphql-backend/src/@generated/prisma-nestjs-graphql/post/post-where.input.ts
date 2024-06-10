@@ -1,10 +1,10 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFilter } from '../prisma/string-filter.input';
+import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { IntFilter } from '../prisma/int-filter.input';
 import { BoolFilter } from '../prisma/bool-filter.input';
-import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
 import { UserNullableRelationFilter } from '../user/user-nullable-relation-filter.input';
 import { CategoriesOnPostsListRelationFilter } from '../categories-on-posts/categories-on-posts-list-relation-filter.input';
 import { LikeListRelationFilter } from '../like/like-list-relation-filter.input';
@@ -25,8 +25,8 @@ export class PostWhereInput {
     @Field(() => StringFilter, {nullable:true})
     id?: StringFilter;
 
-    @Field(() => StringFilter, {nullable:true})
-    url?: StringFilter;
+    @Field(() => StringNullableFilter, {nullable:true})
+    url?: StringNullableFilter;
 
     @Field(() => DateTimeFilter, {nullable:true})
     createdAt?: DateTimeFilter;
@@ -43,8 +43,8 @@ export class PostWhereInput {
     @Field(() => StringFilter, {nullable:true})
     title?: StringFilter;
 
-    @Field(() => StringNullableFilter, {nullable:true})
-    content?: StringNullableFilter;
+    @Field(() => StringFilter, {nullable:true})
+    content?: StringFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
     authorId?: StringNullableFilter;

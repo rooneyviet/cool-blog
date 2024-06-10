@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const prisma_service_1 = require("../prisma/prisma.service");
 const user_service_1 = require("./services/user.service");
+const post_service_1 = require("./services/post.service");
 let SharedModule = class SharedModule {
 };
 exports.SharedModule = SharedModule;
@@ -23,8 +24,8 @@ exports.SharedModule = SharedModule = __decorate([
                 signOptions: { expiresIn: '2days' },
             }),
         ],
-        providers: [prisma_service_1.PrismaService, user_service_1.UserService],
-        exports: [prisma_service_1.PrismaService, user_service_1.UserService],
+        providers: [prisma_service_1.PrismaService, user_service_1.UserService, post_service_1.PostService],
+        exports: [prisma_service_1.PrismaService, user_service_1.UserService, post_service_1.PostService],
     })
 ], SharedModule);
 //# sourceMappingURL=share.module.js.map

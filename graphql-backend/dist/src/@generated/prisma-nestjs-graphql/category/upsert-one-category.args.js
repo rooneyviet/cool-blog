@@ -17,6 +17,7 @@ const category_where_unique_input_1 = require("./category-where-unique.input");
 const class_transformer_1 = require("class-transformer");
 const category_create_input_1 = require("./category-create.input");
 const category_update_input_1 = require("./category-update.input");
+const relation_load_strategy_enum_1 = require("../prisma/relation-load-strategy.enum");
 let UpsertOneCategoryArgs = class UpsertOneCategoryArgs {
 };
 exports.UpsertOneCategoryArgs = UpsertOneCategoryArgs;
@@ -35,6 +36,10 @@ __decorate([
     (0, class_transformer_1.Type)(() => category_update_input_1.CategoryUpdateInput),
     __metadata("design:type", category_update_input_1.CategoryUpdateInput)
 ], UpsertOneCategoryArgs.prototype, "update", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => relation_load_strategy_enum_1.RelationLoadStrategy, { nullable: true }),
+    __metadata("design:type", Object)
+], UpsertOneCategoryArgs.prototype, "relationLoadStrategy", void 0);
 exports.UpsertOneCategoryArgs = UpsertOneCategoryArgs = __decorate([
     (0, graphql_2.ArgsType)()
 ], UpsertOneCategoryArgs);
